@@ -12,7 +12,7 @@
 
     <style>
         body {
-            background: linear-gradient(135deg, #020617, #0b1329, #1e1b4b, #030712);
+            background: linear-gradient(135deg, #020617, #0b1329, #145514, #030712);
             background-size: 400% 400%;
             animation: backgroundGradientShift 25s ease infinite;
             min-height: 100vh;
@@ -22,7 +22,7 @@
         }
 
         @keyframes backgroundGradientShift {
-            0% {
+            0 {
                 background-position: 0% 50%;
             }
 
@@ -705,8 +705,6 @@
                             class="gateway-select-btn bg-slate-950/60 border border-slate-900 p-3 rounded-xl text-xs font-black text-pink-500 transition duration-300">bKash</button>
                         <button type="button" id="dep-btn-Nagad" onclick="selectDepositGateway('Nagad')"
                             class="gateway-select-btn bg-slate-950/60 border border-slate-900 p-3 rounded-xl text-xs font-black text-orange-500 transition duration-300">Nagad</button>
-                        <!-- <button type="button" id="dep-btn-Rocket" onclick="selectDepositGateway('Rocket')"
-                            class="gateway-select-btn bg-slate-950/60 border border-slate-900 p-3 rounded-xl text-xs font-black text-purple-400 transition duration-300">Rocket</button> -->
                     </div>
 
                     <div class="space-y-3 pt-2">
@@ -834,7 +832,6 @@
                     <div class="space-y-3">
 
                         <!-- WhatsApp বাটন -->
-                        <!-- দ্রষ্টব্য: phone= এর পরে আপনার সঠিক হোয়াটসঅ্যাপ নম্বরটি বসান (যেমন: 88017XXXXXXXX) -->
                         <a href="https://wa.me/8801839687667" target="_blank"
                             class="flex items-center justify-between p-4 rounded-xl bg-emerald-600/10 hover:bg-emerald-600/20 border border-emerald-500/20 transition group">
                             <div class="flex items-center gap-3">
@@ -873,7 +870,7 @@
                     <div
                         class="p-4 rounded-xl bg-slate-800/40 border border-slate-700/50 backdrop-blur-md shadow-xl max-w-sm">
 
-                        <!-- Input Field (Soto kore thakbe) -->
+                        <!-- Input Field -->
                         <div class="relative mb-4">
                             <input type="text" id="shareUrl" value="https://buy-rozaa.github.io/.bd/" readonly
                                 class="w-full bg-slate-900/50 border border-slate-700 text-slate-300 text-xs rounded-lg p-2.5 focus:ring-blue-500 focus:border-blue-500 outline-none">
@@ -947,30 +944,6 @@
                         }
                     }
                 </script>
-
-
-                <!-- Link Share Section End -->
-                <!-- <div class="glass-panel p-4 space-y-3 shadow-xl">
-                    <h3 class="text-sm font-black text-slate-100 uppercase tracking-wider">YOUR HISTORY</h3>
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-left text-[11px] font-mono">
-                            <thead>
-                                <tr class="border-b border-slate-900 text-slate-400 font-sans uppercase text-[10px]">
-                                    <th class="pb-2">Operation Model</th>
-                                    <th class="pb-2">Allocation</th>
-                                    <th class="pb-2">Details Mapping</th>
-                                    <th class="pb-2 text-right">Integrity Verification</th>
-                                </tr>
-                            </thead>
-                            <tbody id="history-rows-bucket" class="divide-y divide-slate-950/40 text-slate-300">
-                                <tr>
-                                    <td colspan="4" class="text-center text-slate-500 italic py-4">No data logs compiled
-                                        yet in local state</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div> -->
             </section>
 
 
@@ -1061,6 +1034,16 @@
                             class="w-full bg-slate-900 border border-slate-800 rounded-lg p-2.5 text-xs text-white outline-none focus:border-sky-500/30">
                     </div>
 
+                    <!-- SEARCH BAR COMPONENT FOR ALL USERS (CONDITIONAL DISPLAY VIA JS) -->
+                    <div id="admin-search-container" class="bg-slate-950 p-3 rounded-xl border border-slate-900 hidden">
+                        <div class="relative flex items-center">
+                            <i class="fa-solid fa-magnifying-glass absolute left-3.5 text-slate-500 text-xs"></i>
+                            <input type="text" id="admin-user-search-input" oninput="filterAdminUserList()"
+                                placeholder="Search by User Gmail Address..."
+                                class="w-full bg-slate-900 border border-slate-800 focus:border-red-500/40 rounded-xl pl-9 pr-4 py-2.5 text-xs text-white outline-none transition font-mono">
+                        </div>
+                    </div>
+
                     <!-- SYSTEM DYNAMIC DATA MATRIX TRACKING FEED -->
                     <div id="admin-queue-container" class="space-y-3 max-h-[420px] overflow-y-auto pr-1"></div>
                 </div>
@@ -1121,7 +1104,7 @@
         let currentUserUid = null;
         let currentUserEmail = null;
         let googleRealName = "";
-        let userDataState = { balance: 0.00, isVerified: false, isBlocked: false, taskPointer: 1, isTaskAwaiting: false, lastClaimedTimestamp: 0 };
+        let userDataState = { balance: 0.00, isVerified: false, isBlocked: false, taskPointer: 1, isTaskAwaiting: false, lastClaimedTimestamp: 0, createdAtTimestamp: 0 };
 
         let currentAdminActiveTab = 'deposit';
         let selectedGateway = '';
@@ -1130,6 +1113,7 @@
         let globalPoolsValue = { A: 0, B: 0, C: 0, D: 0 };
         let isDrawProcessing = false;
         let drawSecondsLeft = 60;
+        let masterUsersList = []; // Local memory storage cache for live client side searching filter
 
         // Export Operational Logic Handles straight to window object
         window.handleGoogleLoginAuth = handleGoogleLoginAuth;
@@ -1151,6 +1135,7 @@
         window.verifyAdminCredentials = verifyAdminCredentials;
         window.exitAdminPanelDashboard = exitAdminPanelDashboard;
         window.executeDailyFaucetDistributionClaim = executeDailyFaucetDistributionClaim;
+        window.filterAdminUserList = filterAdminUserList;
 
         // Reactive State Listener Socket connection wrapper loop
         onAuthStateChanged(auth, async (user) => {
@@ -1187,6 +1172,10 @@
             onSnapshot(userRef, (docSnap) => {
                 if (docSnap.exists()) {
                     userDataState = docSnap.data();
+                    // Setup default fallback dynamic parameter safely if timestamp doesn't exist
+                    if (!userDataState.createdAtTimestamp) {
+                        updateDoc(userRef, { createdAtTimestamp: Date.now() });
+                    }
                 } else {
                     userDataState = {
                         uid: user.uid,
@@ -1196,7 +1185,8 @@
                         isBlocked: false,
                         taskPointer: 1,
                         isTaskAwaiting: false,
-                        lastClaimedTimestamp: 0
+                        lastClaimedTimestamp: 0,
+                        createdAtTimestamp: Date.now()
                     };
                     setDoc(userRef, userDataState);
                 }
@@ -1419,6 +1409,12 @@
             await updateDoc(doc(db, "users", currentUserUid), { balance: userDataState.balance - amt });
             await addDoc(collection(db, "pipelines"), { uid: currentUserUid, email: currentUserEmail, category: 'Withdraw', amount: `৳${amt.toFixed(2)}`, details: `Withdraw Method Network: ${method} | Destination Account: ${acc}`, timestamp: Date.now() });
             await addDoc(collection(db, "ledgers"), { uid: currentUserUid, type: 'Withdraw', amount: `৳${amt.toFixed(2)}`, details: `Target Acc: ${acc}`, status: 'Pending', timestamp: Date.now() });
+
+            // Increment local aggregate parameter for precise historical calculation
+            const userRef = doc(db, "users", currentUserUid);
+            const totalWithdrawnSoFar = userDataState.totalWithdrawnAmount || 0;
+            await updateDoc(userRef, { totalWithdrawnAmount: totalWithdrawnSoFar + amt });
+
             alert('✅ উইথড্রাল রিকোয়েস্ট সফলভাবে প্রসেস করা হয়েছে।');
             document.getElementById('withdraw-account').value = ''; document.getElementById('withdraw-amount').value = '';
         }
@@ -1468,26 +1464,6 @@
             });
         }
 
-        // DYNAMIC LUCKY DRAW SYSTEM REALTIME GLOBAL TRANSACTIONS REBUILD
-        // function listenToGlobalDrawHistoryLog() {
-        //     const q = query(collection(db, "draw_global_history"), orderBy("timestamp", "desc"), limit(15));
-        //     onSnapshot(q, (snapshot) => {
-        //         const container = document.getElementById('global-draw-history-rows'); if (!container) return; container.innerHTML = '';
-        //         if (snapshot.empty) { container.innerHTML = `<tr><td colspan="4" class="text-center text-slate-500 italic py-4">No real-time bid transactions running</td></tr>`; return; }
-        //         snapshot.forEach(doc => {
-        //             const h = doc.data();
-        //             let stateColor = h.winStatus ? 'text-emerald-400 font-black' : 'text-slate-500';
-        //             container.innerHTML += `
-        //                 <tr class="border-b border-slate-950/20 hover:bg-slate-900/5 transition">
-        //                     <td class="py-2 text-slate-400 select-all max-w-[90px] truncate">${h.userName}</td>
-        //                     <td class="py-2"><span class="px-1.5 py-0.5 rounded text-[9px] bg-slate-950 font-bold uppercase ${h.zone === 'A' ? 'text-red-400' : h.zone === 'B' ? 'text-blue-400' : h.zone === 'C' ? 'text-emerald-400' : 'text-amber-400'}">Zone ${h.zone}</span></td>
-        //                     <td class="py-2 text-slate-300">৳${h.amount}</td>
-        //                     <td class="py-2 text-right ${stateColor}">${h.winStatus ? `+৳${(h.amount * 2)}` : 'Loss Node'}</td>
-        //                 </tr>
-        //             `;
-        //         });
-        //     });
-        // }
         function listenToGlobalDrawHistoryLog() {
             const q = query(collection(db, "draw_global_history"), orderBy("timestamp", "desc"), limit(15));
 
@@ -1501,11 +1477,9 @@
                     return;
                 }
 
-                // ১. প্রতিটি জোনের মোট টাকা জমানোর অবজেক্ট
                 const zoneAmounts = { 'A': 0, 'B': 0, 'C': 0, 'D': 0 };
                 const historyData = [];
 
-                // ২. ডেটা পুশ করা এবং জোন ভিত্তিক মোট টাকা যোগ করা
                 snapshot.forEach(doc => {
                     const h = doc.data();
                     historyData.push(h);
@@ -1514,7 +1488,6 @@
                     }
                 });
 
-                // ৩. সবচেয়ে বেশি টাকা কোন জোনে পড়েছে (Highest Zone) তা খুঁজে বের করা
                 let maxAmount = -1;
                 let highestZone = '';
 
@@ -1525,16 +1498,10 @@
                     }
                 }
 
-                // ৪. সবচেয়ে বেশি টাকার জোনটি বাদ দিয়ে বাকি জোনগুলোর একটি লিস্ট তৈরি করা
                 const allowedZones = Object.keys(zoneAmounts).filter(zone => zone !== highestZone);
-
-                // ৫. বাকি জোনগুলোর মধ্য থেকে যেকোনো একটি জোন ভাগ্যবশত (Randomly) উইনার হবে
-                // আপনি চাইলে এখানে প্রথমটি বা যেকোনো নির্দিষ্ট একটিও ফিক্সড করতে পারেন। বর্তমানে এটি র‍্যান্ডমলি সিলেক্ট করবে।
                 const winnerZone = allowedZones[Math.floor(Math.random() * allowedZones.length)];
 
-                // ৬. এখন UI-তে ডেটা রেন্ডার করা
                 historyData.forEach(h => {
-                    // চেক করা হচ্ছে এই রো-এর জোনটিই আমাদের উইনার জোন কি না
                     const isWinnerZone = (h.zone === winnerZone);
                     let stateColor = isWinnerZone ? 'text-emerald-400 font-black' : 'text-slate-500';
 
@@ -1580,8 +1547,7 @@
             isDrawProcessing = true; let zones = ['A', 'B', 'C', 'D']; let winZone = 'A'; let min = globalPoolsValue.A;
             zones.forEach(z => { if (globalPoolsValue[z] < min) { min = globalPoolsValue[z]; winZone = z; } });
 
-            // Calculate base rotation vector degree indices
-            let deg = 2160; // multi rotation cycle setup
+            let deg = 2160;
             if (winZone === 'A') deg += 45; if (winZone === 'B') deg += 135; if (winZone === 'C') deg += 225; if (winZone === 'D') deg += 315;
             const needle = document.getElementById('compass-needle-element'); if (needle) needle.style.transform = `translate(-50%, -85px) rotate(${deg}deg)`;
 
@@ -1594,16 +1560,11 @@
                         if (pSnap.exists()) await updateDoc(pRef, { balance: (pSnap.data().balance || 0) + payout });
                     }
 
-                    // Post configuration profile transaction ledgers logs
                     await addDoc(collection(db, "ledgers"), { uid: bid.uid, type: win ? 'Draw Win' : 'Draw Loss', amount: win ? `+৳${payout}.00` : `-৳${bid.amount}.00`, details: `Zone ${bid.zone} Algorithm Clearance`, status: win ? 'Approved' : 'Failed', timestamp: Date.now() });
-
-                    // Post parameters global historical archive ledger registry 
                     await addDoc(collection(db, "draw_global_history"), { userName: bid.userName || bid.userEmail.split('@')[0], zone: bid.zone, amount: bid.amount, winStatus: win, timestamp: Date.now() });
-
                     await deleteDoc(doc(db, "draw_bids", bid.id));
                 }
 
-                // Reset mechanical properties vector parameters
                 if (needle) { needle.style.transition = 'none'; needle.style.transform = `translate(-50%, -85px) rotate(${deg % 360}deg)`; setTimeout(() => { needle.style.transition = 'transform 5s cubic-bezier(0.15, 0.85, 0.3, 1)'; }, 50); }
                 drawSecondsLeft = 60; isDrawProcessing = false;
             }, 5200);
@@ -1614,7 +1575,77 @@
             currentAdminActiveTab = seg;
             document.querySelectorAll('[id^="btn-sub-"]').forEach(b => b.className = 'text-[10px] font-black py-2 rounded-lg text-center uppercase tracking-wider transition bg-slate-950/60 text-slate-500');
             document.getElementById(`btn-sub-${seg}`).className = 'text-[10px] font-black py-2 rounded-lg text-center uppercase tracking-wider transition bg-red-500/10 text-red-400 border border-red-500/20';
+
+            // Toggle visibility condition wrapper of Search Bar component safely
+            const searchContainer = document.getElementById('admin-search-container');
+            if (seg === 'users') {
+                searchContainer.classList.remove('hidden');
+            } else {
+                searchContainer.classList.add('hidden');
+            }
+
             listenToAdminRealtimePipelines();
+        }
+
+        // Dedicated live runtime rendering execution block for users sub array matrix
+        function renderAdminUserCards(usersArray) {
+            const container = document.getElementById('admin-queue-container');
+            if (!container) return;
+            container.innerHTML = '';
+
+            if (usersArray.length === 0) {
+                container.innerHTML = `<p class="text-center text-slate-500 italic text-xs pt-4">No matching profiles found on network</p>`;
+                return;
+            }
+
+            usersArray.forEach((u) => {
+                // Calculate runtime parameters safely to determine profile seniority status matrix
+                const userRegistrationAgeMs = Date.now() - (u.createdAtTimestamp || Date.now());
+                const aWeekInMs = 7 * 24 * 60 * 60 * 1000;
+                const userSeniorityBadgeText = (userRegistrationAgeMs > aWeekInMs) ? "OLD USER" : "NEW USER";
+                const seniorityBadgeColorClass = (userRegistrationAgeMs > aWeekInMs) ? "bg-purple-500/10 text-purple-400 border-purple-500/20" : "bg-blue-500/10 text-blue-400 border-blue-500/20";
+
+                const totalWithdrawnCalculated = u.totalWithdrawnAmount || 0;
+
+                const div = document.createElement('div');
+                div.className = "bg-slate-950/90 p-4 rounded-2xl border border-slate-900 space-y-3 text-xs text-left shadow-md relative overflow-hidden";
+                div.innerHTML = `
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <div class="flex items-center gap-2 flex-wrap">
+                                <p class="font-black text-slate-200 select-all font-mono">${u.email}</p>
+                                <span class="px-2 py-0.5 rounded text-[8px] border font-black uppercase tracking-wider ${seniorityBadgeColorClass}">${userSeniorityBadgeText}</span>
+                            </div>
+                            <p class="text-[10px] text-slate-400 mt-2 font-sans">
+                                Balance: <span class="text-emerald-400 font-bold font-mono">৳${u.balance.toFixed(2)}</span> | 
+                                KYC: <span class="${u.isVerified ? 'text-emerald-400' : 'text-amber-500'} font-black uppercase tracking-wide text-[9px]">${u.isVerified ? 'Verified' : 'Unverified'}</span> | 
+                                Stage: <span class="text-indigo-400 font-mono font-black">#${u.taskPointer}</span>
+                            </p>
+                            <!-- Total Withdrawn Parameter Render Box -->
+                            <div class="mt-1 bg-slate-900/60 inline-block px-2 py-1 rounded border border-slate-800 text-[10px]">
+                                Total Withdraw: <span class="text-rose-400 font-black font-mono">৳${totalWithdrawnCalculated.toFixed(2)}</span>
+                            </div>
+                        </div>
+                        <button onclick="toggleUserFreezeStatus('${u.id}', ${u.isBlocked})" class="bg-red-950/60 text-red-400 text-[10px] px-2.5 py-1 rounded-lg border border-red-500/20 font-black uppercase tracking-wide transition hover:bg-red-900/30">${u.isBlocked ? '🔓 Unfreeze' : '🔒 Freeze Account'}</button>
+                    </div>
+                    <div class="flex gap-2 items-center pt-1 border-t border-slate-900/60">
+                        <input type="number" id="adj-${u.id}" placeholder="৳ Injection Amount" class="w-2/3 bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-lg text-white text-xs outline-none focus:border-indigo-500/30 font-mono">
+                        <button onclick="mutateRegisteredUserBalance('${u.id}', ${u.balance})" class="w-1/3 bg-indigo-600 text-white font-black py-1.5 rounded-xl text-[11px] uppercase tracking-wider shadow-md hover:bg-indigo-500">Inject</button>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Live filtration function processing stream parameters dynamically on keyup input metrics events
+        function filterAdminUserList() {
+            const queryTokenString = document.getElementById('admin-user-search-input').value.trim().toLowerCase();
+            if (!queryTokenString) {
+                renderAdminUserCards(masterUsersList);
+            } else {
+                const filteredNodes = masterUsersList.filter(user => user.email && user.email.toLowerCase().includes(queryTokenString));
+                renderAdminUserCards(filteredNodes);
+            }
         }
 
         function listenToAdminRealtimePipelines() {
@@ -1623,27 +1654,12 @@
             // REALTIME ALL USER BROAD OVERVIEW DATA RETRIEVAL HANDLER
             if (currentAdminActiveTab === 'users') {
                 onSnapshot(collection(db, "users"), (snap) => {
-                    container.innerHTML = '';
-                    if (snap.empty) { container.innerHTML = `<p class="text-center text-slate-500 italic text-xs pt-4">No users registered on system</p>`; return; }
+                    masterUsersList = [];
                     snap.forEach((userDoc) => {
-                        const u = userDoc.data();
-                        const div = document.createElement('div');
-                        div.className = "bg-slate-950/90 p-4 rounded-2xl border border-slate-900 space-y-3 text-xs text-left shadow-md relative overflow-hidden";
-                        div.innerHTML = `
-                            <div class="flex justify-between items-start">
-                                <div>
-                                    <p class="font-black text-slate-200 select-all font-mono">${u.email}</p>
-                                    <p class="text-[10px] text-slate-400 mt-1 font-sans">Bal: <span class="text-emerald-400 font-bold font-mono">৳${u.balance.toFixed(2)}</span> | KYC: <span class="${u.isVerified ? 'text-emerald-400' : 'text-amber-500'} font-black uppercase tracking-wide text-[9px]">${u.isVerified ? 'Verified' : 'Unverified'}</span> | Task Stage: <span class="text-indigo-400 font-mono font-black">#${u.taskPointer}</span></p>
-                                </div>
-                                <button onclick="toggleUserFreezeStatus('${userDoc.id}', ${u.isBlocked})" class="bg-red-950/60 text-red-400 text-[10px] px-2.5 py-1 rounded-lg border border-red-500/20 font-black uppercase tracking-wide transition hover:bg-red-900/30">${u.isBlocked ? '🔓 Unfreeze' : '🔒 Freeze Account'}</button>
-                            </div>
-                            <div class="flex gap-2 items-center pt-1 border-t border-slate-900/60">
-                                <input type="number" id="adj-${userDoc.id}" placeholder="৳ Injection Amount" class="w-2/3 bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-lg text-white text-xs outline-none focus:border-indigo-500/30 font-mono">
-                                <button onclick="mutateRegisteredUserBalance('${userDoc.id}', ${u.balance})" class="w-1/3 bg-indigo-600 text-white font-black py-1.5 rounded-xl text-[11px] uppercase tracking-wider shadow-md hover:bg-indigo-500">Inject</button>
-                            </div>
-                        `;
-                        container.appendChild(div);
+                        masterUsersList.push({ id: userDoc.id, ...userDoc.data() });
                     });
+                    // Execute basic initial execution mapping
+                    filterAdminUserList();
                 });
                 return;
             }
@@ -1691,7 +1707,13 @@
                 if (category === 'KYC Upgrade') await updateDoc(userRef, { isVerified: true });
                 await addDoc(collection(db, "ledgers"), { uid: targetUid, type: logType, amount: amount, details: "Transaction Approved By Master Admin", status: "Approved", timestamp: Date.now() });
             } else {
-                if (category === 'Withdraw' && !isNaN(numeric)) await updateDoc(userRef, { balance: uData.balance + numeric });
+                if (category === 'Withdraw' && !isNaN(numeric)) {
+                    await updateDoc(userRef, { balance: uData.balance + numeric });
+                    // Deduct aggregate historical state value too if rejected 
+                    const currentWithdrawnCalculated = uData.totalWithdrawnAmount || 0;
+                    const rollbackSum = Math.max(0, currentWithdrawnCalculated - numeric);
+                    await updateDoc(userRef, { totalWithdrawnAmount: rollbackSum });
+                }
                 if (category === 'Tasks') await updateDoc(userRef, { isTaskAwaiting: false });
                 await addDoc(collection(db, "ledgers"), { uid: targetUid, type: logType, amount: amount, details: "Rejected/Declined by Security Architecture", status: "Failed", timestamp: Date.now() });
             }
