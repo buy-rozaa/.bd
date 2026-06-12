@@ -1,0 +1,1744 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>refer and earn programs</title>
+    <!-- Tailwind Engine -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #020617, #0b1329, #1e1b4b, #030712);
+            background-size: 400% 400%;
+            animation: backgroundGradientShift 25s ease infinite;
+            min-height: 100vh;
+            color: #f8fafc;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            overflow-x: hidden;
+        }
+
+        @keyframes backgroundGradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.6);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(99, 102, 241, 0.3);
+            border-radius: 999px;
+        }
+
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.45);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 1.5rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .glass-card-interactive {
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card-interactive:hover {
+            background: rgba(255, 255, 255, 0.03);
+            border-color: rgba(99, 102, 241, 0.25);
+            transform: translateY(-2px);
+        }
+
+        .glass-nav {
+            background: rgba(7, 11, 23, 0.85);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .compass-wheel-container {
+            width: 220px;
+            height: 220px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .compass-wheel-core {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 8px solid #111827;
+            background: conic-gradient(#ef4444 0deg 90deg,
+                    #3b82f6 90deg 180deg,
+                    #10b981 180deg 270deg,
+                    #f59e0b 270deg 360deg);
+            position: relative;
+            box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.8), 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .compass-needle-element {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 8px;
+            height: 105px;
+            background: linear-gradient(to top, #ffffff 50%, #f43f5e 50%);
+            clip-path: polygon(50% 0%, 100% 20%, 70% 100%, 30% 100%, 0% 20%);
+            transform-origin: 50% 85px;
+            transform: translate(-50%, -85px) rotate(0deg);
+            transition: transform 5s cubic-bezier(0.15, 0.85, 0.3, 1);
+            z-index: 20;
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.4));
+        }
+
+        .compass-center-pivot {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 18px;
+            height: 18px;
+            background: #ffffff;
+            border: 4px solid #1f2937;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 30;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .sms-alert-node {
+            background: linear-gradient(90deg, rgba(56, 189, 248, 0.15), rgba(30, 41, 59, 0.1));
+            border-left: 4px solid #38bdf8;
+            animation: slideInNode 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes slideInNode {
+            from {
+                opacity: 0;
+                transform: translateX(-15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .glow-green {
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
+        }
+
+        .glow-indigo {
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.25);
+        }
+    </style>
+</head>
+
+<body class="pb-28 pt-4 px-2 md:px-6">
+
+    <!-- ================= PROTOCOL CENTRAL OAUTH SCREEN ================= -->
+    <div id="login-screen-overlay"
+        class="fixed inset-0 bg-slate-950/95 backdrop-blur-xl flex flex-col items-center justify-center z-50 p-6 hidden">
+        <div class="glass-panel w-full max-w-sm p-8 space-y-8 text-center border border-indigo-500/10 shadow-2xl">
+            <div class="space-y-3">
+                <div
+                    class="w-20 h-20 rounded-2xl bg-gradient-to-tr from-indigo-600 to-violet-600 border border-indigo-400/20 flex items-center justify-center text-white font-black text-3xl mx-auto shadow-2xl relative overflow-hidden group">
+                    <span
+                        class="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
+                    RE
+                </div>
+                <h2
+                    class="text-2xl font-black tracking-widest text-white uppercase bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-400">
+                    REFER AND EARN MONEY</h2>
+
+            </div>
+
+            <div class="p-4 bg-slate-900/50 rounded-xl border border-slate-800/80 text-left space-y-2">
+                <div class="flex items-center gap-2 text-[11px] text-slate-400"><i
+                        class="fa-solid fa-shield-halved text-emerald-400"></i> 1m people conected </div>
+                <div class="flex items-center gap-2 text-[11px] text-slate-400"><i
+                        class="fa-solid fa-server text-indigo-400"></i> trusted income and withdraw</div>
+            </div>
+
+            <button onclick="handleGoogleLoginAuth()"
+                class="w-full bg-gradient-to-r from-red-600 via-pink-600 to-indigo-600 hover:opacity-90 text-white text-xs font-bold py-3.5 rounded-xl transition duration-300 shadow-xl flex items-center justify-center gap-3 tracking-wider uppercase">
+                <i class="fa-brands fa-google text-sm"></i> Login your Gmail
+            </button>
+        </div>
+    </div>
+
+    <!-- FROZEN BAN OVERLAY GATE -->
+    <div id="blocked-screen-overlay"
+        class="fixed inset-0 bg-slate-950/98 backdrop-blur-2xl flex flex-col items-center justify-center hidden z-50 text-center p-6">
+        <div
+            class="w-24 h-24 rounded-full bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-500 mb-6 shadow-2xl">
+            <i class="fa-solid fa-user-slash text-4xl animate-pulse"></i>
+        </div>
+        <h2 class="text-2xl font-black text-white uppercase tracking-wider">Node Signature Suspended</h2>
+        <p class="text-sm text-slate-400 max-w-sm mt-3 leading-relaxed">Your cloud profile configuration access has been
+            isolated by the Master Root Administrator Operator control console.</p>
+        <div class="mt-8 text-[11px] text-slate-600 border border-slate-900 px-4 py-2 rounded-xl bg-slate-950">SECURE ID
+            BLOCK LOCK ACTIVE</div>
+    </div>
+
+    <!-- ================= ADMINISTRATOR SECURE AUTHENTICATION GATEWAY ================= -->
+    <div id="admin-auth-modal"
+        class="fixed inset-0 bg-slate-950/80 backdrop-blur-md flex items-center justify-center hidden z-50 p-4">
+        <div class="glass-panel w-full max-w-xs p-6 space-y-5 border border-red-500/20 shadow-2xl">
+            <div class="text-center space-y-1">
+                <div
+                    class="w-10 h-10 bg-red-500/10 border border-red-500/20 rounded-xl flex items-center justify-center mx-auto mb-1">
+                    <i class="fa-solid fa-terminal text-red-400 text-lg"></i>
+                </div>
+                <h3 class="text-sm font-black text-white uppercase tracking-wider">Operator Terminal Authentication</h3>
+                <p class="text-[10px] text-slate-400">Provide clearance token values to decrypt terminal</p>
+            </div>
+            <div class="space-y-2.5">
+                <input type="text" id="admin-input-user" placeholder="Root Username"
+                    class="w-full bg-slate-950 border border-slate-800 focus:border-red-500/50 transition rounded-lg px-3 py-2.5 text-xs text-white outline-none">
+                <input type="password" id="admin-input-pass" placeholder="Root Token Key Password"
+                    class="w-full bg-slate-950 border border-slate-800 focus:border-red-500/50 transition rounded-lg px-3 py-2.5 text-xs text-white outline-none">
+            </div>
+            <div class="flex gap-2 pt-2">
+                <button onclick="closeAdminAuthModal()"
+                    class="w-1/2 bg-slate-900 border border-slate-800 hover:bg-slate-800 text-slate-400 text-xs font-bold py-2.5 rounded-lg transition">Exit</button>
+                <button onclick="verifyAdminCredentials()"
+                    class="w-1/2 bg-gradient-to-r from-red-600 to-rose-600 text-white text-xs font-bold py-2.5 rounded-lg transition shadow-lg shadow-red-900/20">Login
+                    Admin</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= MASTER SYSTEM APPLICATION APPLICATION HOUSING ================= -->
+    <div id="main-app-wrapper" class="hidden animate-fadeIn">
+
+        <!-- RUNNING HEADER STATION -->
+        <header class="max-w-md mx-auto mb-5 flex justify-between items-center glass-panel p-4 shadow-xl">
+            <div class="flex items-center gap-3">
+                <div
+                    class="w-11 h-11 rounded-xl bg-gradient-to-br from-indigo-600/30 to-violet-600/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 font-black text-xl shadow-inner">
+                    RE</div>
+                <div>
+                    <h1 id="header-user-display-name"
+                        class="text-sm font-black tracking-wide text-slate-100 truncate max-w-[160px]">Loading
+                        Profile...</h1>
+                    <p class="text-[10px] text-emerald-400 font-bold flex items-center gap-1.5 mt-0.5">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Online
+                    </p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <button onclick="switchTab('profile')"
+                    class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center shadow-md hover:border-slate-700 transition">
+                    <i class="fa-regular fa-user text-xs text-slate-300"></i>
+                </button>
+            </div>
+        </header>
+
+
+
+        <!-- Live Withdrawal Ad Alert Start (10K+ Dynamic Variations) -->
+        <div
+            class="flex items-center justify-between p-3 rounded-xl bg-gradient-to-r from-slate-900 via-slate-950 to-slate-900 border border-slate-800/80 shadow-2xl max-w-sm w-full mx-auto overflow-hidden transition-all duration-500">
+
+            <!-- Left Section: Dynamic Notification Info -->
+            <div class="flex items-center gap-3">
+                <!-- Animated Badge / Icon -->
+                <div
+                    class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-600/20 to-teal-600/5 border border-emerald-500/20 flex items-center justify-center text-emerald-400 font-black text-sm shadow-inner relative shrink-0">
+                    <i class="fa-solid fa-money-bill-transfer animate-pulse"></i>
+                    <!-- Mini Green Dot -->
+                    <span
+                        class="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-emerald-500 border-2 border-slate-950 animate-ping"></span>
+                </div>
+
+                <!-- Text Content Area -->
+                <div class="flex flex-col min-w-0">
+                    <!-- Username / Phone (Truncated safely) -->
+                    <h4 id="ad-user-identity"
+                        class="text-xs font-black tracking-wide text-slate-200 truncate max-w-[160px]">
+                        monir***@gmail.com
+                    </h4>
+                    <!-- Action and Amount Status -->
+                    <p class="text-[10px] text-slate-400 font-medium flex items-center gap-1 mt-0.5">
+                        Successfully <span id="ad-withdraw-amount"
+                            class="text-emerald-400 font-bold bg-emerald-500/10 px-1.5 py-0.5 rounded border border-emerald-500/10">Withdraw
+                            10,000 ৳</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Right Section: Live Badge -->
+            <div class="flex items-center gap-2 shrink-0">
+                <div
+                    class="px-2.5 py-1 rounded-lg bg-slate-950 border border-slate-800/80 flex items-center gap-1.5 shadow-md">
+                    <span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse"></span>
+                    <span class="text-[9px] font-black text-rose-400 uppercase tracking-widest">Live Pay</span>
+                </div>
+            </div>
+        </div>
+        <!-- Live Withdrawal Ad Alert End -->
+
+        <script>
+            // Huge Dynamic Seed Data to cross-multiply (Creates 10k+ combinations)
+            const baseNames = [
+                "monir", "azim", "rakib", "bayezid", "asad", "shakib", "tamim", "ripon", "arifin", "faysal",
+                "hasan", "sabbir", "sohel", "milon", "kamal", "jamal", "imran", "rashed", "sumon", "rubel",
+                "rony", "jony", "shanto", "anik", "fahim", "nabil", "siam", "tanvir", "alamin", "arif",
+                "hossain", "ahmed", "khan", "rahman", "islam", "babu", "sujon", "joy", "akash", "shuvo",
+                "tareq", "masud", "mithu", "tarek", "mamun", "reza", "nayan", "saju", "saiful", "selim",
+                "alif", "ayan", "sami", "nafi", "tasnim", "mahi", "rahi", "sajid", "zayan", "rafsan",
+                "mustafa", "yasin", "mizan", "zakir", "anwar", "delwar", "helal", "belal", "babul", "biplob",
+                "liton", "kajal", "sohag", "polash", "shafiq", "rafiq", "latif", "habib", "manik", "ratan",
+                "monjur", "siraj", "faruk", "harun", "kibriya", "amzad", "mokles", "kuddus", "yunus", "idris",
+                "zihad", "maruf", "mushfiq", "taskin", "soumya", "mahmud", "riyad", "mustafiz", "shoriful",
+                "mursalin", "rakibul", "tawhid", "hridoy", "sanjid", "tanzim", "sakil", "morshed", "sajjed", "zamil",
+                "nobin", "apo", "sajib", "milton", "kallol", "bappy", "emon", "asif", "munna", "naim",
+                "zaved", "tipu", "raju", "rana", "rabiul", "jewel", "helel", "shahid", "zahir", "nasir",
+                "basir", "anis", "dalim", "pavel", "parvez", "saad", "hamza", "zaid", "omar", "ali",
+                "osman", "abubakar", "siddik", "zubayer", "tawfik", "safwan", "afif", "labib", "sayem",
+                "shahrier", "tasfique", "adnan", "isho", "imiaz", "wasif", "mahir", "tahsin", "zarif", "radi",
+                "rayan", "farhan", "fardin", "naimur", "wasim", "nadim", "naeem", "munim", "mukit", "mostofa",
+                "mujib", "hasib", "rakin", "samin", "sadman", "safat", "tasin", "nihal", "nafiul", "ayaz",
+                "jahid", "mahin", "najib", "munir", "asraf", "ahsan", "musa", "isa", "akram", "aslam",
+                "ajmal", "iqbal", "tarik", "touhid", "badal", "sajal", "tutul", "titu", "gias", "jalal",
+                "reazul", "sirajul", "aminul", "mofazzal", "nazrul", "sukkur", "saidul", "obaydullah", "atowar", "emdad",
+                "ekram", "enam", "enamul", "erfan", "eshan", "ezaz", "fadel", "fahad", "faiyaz", "faiz",
+                "faizan", "fakhrul", "farid", "fariq", "fariha", "faris", "faruq", "fateh", "fatin", "fawaz",
+                "fayyad", "fazle", "fida", "fuad", "furqan", "galib", "gaus", "hafeez", "hafiz", "haider",
+                "hajjaj", "hakim", "haleem", "halim", "hamdan", "hamid", "hammad"
+            ];
+
+            const domains = ["@gmail.com", "@yahoo.com", "@outlook.com", "@hotmail.com"];
+            const phonePrefixes = ["017", "018", "019", "015", "016", "013", "014"];
+
+            // Function to generate a random identity on the fly
+            function generateRandomUser() {
+                // 50% chance email, 50% chance phone number
+                if (Math.random() > 0.5) {
+                    const randomName = baseNames[Math.floor(Math.random() * baseNames.length)];
+                    const randomDomain = domains[Math.floor(Math.random() * domains.length)];
+                    const randomNum = Math.floor(Math.random() * 900) + 100; // Adds 3 random secret numbers
+                    return `${randomName}${randomNum}***${randomDomain}`;
+                } else {
+                    const prefix = phonePrefixes[Math.floor(Math.random() * phonePrefixes.length)];
+                    const middleDigits = Math.floor(Math.random() * 90) + 10;
+                    return `${prefix}${middleDigits}******`;
+                }
+            }
+
+            // Generate accurate structured money packets
+            function getRandomAmount() {
+                // Multiples of 100s and 1000s to make it look realistic
+                const baseAmounts = [450, 700, 1200, 2500, 3200, 5000, 6800, 8500, 10000, 12500, 15000, 18500, 22000, 25000, 30000];
+                return baseAmounts[Math.floor(Math.random() * baseAmounts.length)].toLocaleString();
+            }
+
+            function cycleLiveAdNotification() {
+                const identityText = document.getElementById("ad-user-identity");
+                const amountText = document.getElementById("ad-withdraw-amount");
+
+                if (!identityText || !amountText) return;
+
+                // Micro-animation CSS control group
+                identityText.style.opacity = "0";
+                identityText.style.transform = "translateY(-4px)";
+                amountText.style.opacity = "0";
+                amountText.style.transform = "translateY(4px)";
+
+                setTimeout(() => {
+                    // Fetch dynamically generated data packages
+                    identityText.innerText = generateRandomUser();
+                    amountText.innerText = `Withdraw ${getRandomAmount()} TK`;
+
+                    // Reset animation positioning
+                    identityText.style.opacity = "1";
+                    identityText.style.transform = "translateY(0)";
+                    amountText.style.opacity = "1";
+                    amountText.style.transform = "translateY(0)";
+                }, 300);
+            }
+
+            // 4000ms (4 seconds) rotation setup
+            setInterval(cycleLiveAdNotification, 4000);
+        </script>
+
+        <style>
+            #ad-user-identity,
+            #ad-withdraw-amount {
+                transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+        </style>
+        <br>
+
+
+
+
+        <!-- ROUTED MODULE INTERFACES MOUNT CONTAINER -->
+        <main class="max-w-md mx-auto space-y-5 mb-24">
+
+            <!-- ================= INTERFACE MODULE: HOME STAGE ================= -->
+            <section id="tab-home" class="tab-content space-y-5">
+                <!-- WALLET MAIN GLOW CONTAINER -->
+                <div
+                    class="glass-panel p-6 relative overflow-hidden glow-indigo bg-gradient-to-br from-slate-900/60 via-transparent to-indigo-950/20">
+                    <div class="absolute -top-12 -right-12 w-32 h-32 bg-indigo-500/10 rounded-full blur-3xl"></div>
+                    <div class="flex justify-between items-start mb-5 relative z-10">
+                        <div>
+                            <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Available Balance
+                            </p>
+                            <h2 class="text-4xl font-black text-white mt-1 tracking-tight flex items-baseline gap-1">
+                                <span class="text-2xl font-bold text-slate-400">TK</span><span
+                                    id="main-balance">0.00</span>
+                            </h2>
+                        </div>
+                        <span id="kyc-home-badge"
+                            class="transition-all duration-300 text-[10px] font-black px-3 py-1.5 rounded-xl uppercase tracking-wider">Loading
+                            Node State...</span>
+                    </div>
+
+                    <!-- REVENUE BOOSTER CLAIM MECHANISM (DAILY STICKER) -->
+                    <div
+                        class="bg-slate-950/80 rounded-xl p-3.5 border border-slate-900 flex justify-between items-center mb-5 relative z-10">
+                        <div class="space-y-0.5">
+                            <h4
+                                class="text-xs font-black text-slate-200 uppercase tracking-wide flex items-center gap-1.5">
+                                <i class="fa-solid fa-gift text-pink-400"></i> Daily Bonus
+                            </h4>
+                            <p class="text-[10px] text-slate-400">Claim TK 10 everyday instantly to account</p>
+                        </div>
+                        <button id="daily-claim-master-trigger" onclick="executeDailyFaucetDistributionClaim()"
+                            class="bg-gradient-to-r from-pink-600 to-indigo-600 hover:opacity-90 disabled:from-slate-800 disabled:to-slate-800 disabled:text-slate-500 text-white text-[11px] font-black px-4 py-2 rounded-xl shadow-lg transition tracking-wide uppercase disabled:cursor-not-allowed">Claim
+                            TK 10</button>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3 relative z-10">
+                        <button onclick="switchTab('deposit')"
+                            class="bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold py-3 rounded-xl transition shadow-lg flex items-center justify-center gap-2 tracking-wide uppercase">
+                            <i class="fa-solid fa-circle-plus text-[12px]"></i> Deposit
+                        </button>
+                        <button onclick="switchTab('withdraw')"
+                            class="bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs font-bold py-3 rounded-xl transition border border-slate-800 flex items-center justify-center gap-2 tracking-wide uppercase">
+                            <i class="fa-solid fa-money-bill-wave text-[12px]"></i> Withdraw
+                        </button>
+                    </div>
+                </div>
+
+                <!-- SUB PORTAL MATRIX NAVIGATION GRID -->
+                <div class="grid grid-cols-4 gap-2.5">
+                    <button onclick="switchTab('tasks')" class="glass-panel p-3.5 text-center glass-card-interactive">
+                        <div
+                            class="w-10 h-10 bg-indigo-500/10 text-indigo-400 rounded-xl flex items-center justify-center mx-auto mb-2 border border-indigo-500/10 shadow-md">
+                            <i class="fa-solid fa-cubes-stacked text-base"></i>
+                        </div>
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-slate-300">20 Refer</span>
+                    </button>
+                    <button onclick="switchTab('draw')" class="glass-panel p-3.5 text-center glass-card-interactive">
+                        <div
+                            class="w-10 h-10 bg-pink-500/10 text-pink-400 rounded-xl flex items-center justify-center mx-auto mb-2 border border-pink-500/10 shadow-md">
+                            <i class="fa-solid fa-compass text-base"></i>
+                        </div>
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-slate-300">LUCKY DRAW</span>
+                    </button>
+                    <button onclick="switchTab('verification')"
+                        class="glass-panel p-3.5 text-center glass-card-interactive">
+                        <div
+                            class="w-10 h-10 bg-amber-500/10 text-amber-400 rounded-xl flex items-center justify-center mx-auto mb-2 border border-amber-500/10 shadow-md">
+                            <i class="fa-solid fa-fingerprint text-base"></i>
+                        </div>
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-slate-300">KYC Verify</span>
+                    </button>
+                    <button onclick="switchTab('history')" class="glass-panel p-3.5 text-center glass-card-interactive">
+                        <div
+                            class="w-10 h-10 bg-emerald-500/10 text-emerald-400 rounded-xl flex items-center justify-center mx-auto mb-2 border border-emerald-500/10 shadow-md">
+                            <i class="fa-solid fa-receipt text-base"></i>
+                        </div>
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-slate-300">HISTORY</span>
+                    </button>
+                </div>
+
+
+                <!-- SYSTEM INTEGRATED PUSH ALERTS FEED -->
+                <div class="glass-panel p-4 space-y-3">
+                    <h4 class="text-xs font-black text-slate-300 uppercase tracking-wider flex items-center gap-2"><i
+                            class="fa-solid fa-envelope-open-text text-sky-400 animate-pulse"></i>
+                        Notification Broadcasts</h4>
+                    <div id="user-live-notification-box" class="space-y-2 max-h-40 overflow-y-auto text-[11px] pr-1">
+                        <p class="text-slate-500 italic text-center py-4">ইনবক্স ফাকা আছে</p>
+                    </div>
+                </div>
+
+
+                <div class="glass-panel p-4 space-y-3">
+                    <h4 class="text-xs font-black text-slate-300 uppercase tracking-wider flex items-center gap-2">
+                        Notice board</h4>
+                    <div>
+                        <p>🎉 Welcome to Our Referral Earn Money Platform 🎉
+                            💎 আয় করুন সহজে, দ্রুত এবং নিরাপদে! 💎<br>
+
+                            আপনাকে আমাদের Referral Earn Money প্ল্যাটফর্মে আন্তরিক স্বাগতম। এখানে আপনি আপনার বন্ধুদের
+                            আমন্ত্রণ জানিয়ে খুব সহজেই আয়
+                            করতে পারবেন। আমাদের প্ল্যাটফর্মে রয়েছে হাজারো ব্যবহারকারীর আস্থা এবং নিয়মিত উইথড্র
+                            সুবিধা।<br>
+
+                            ✅ ১০০% Real Platform <br>
+                            ✅ নিয়মিত Withdraw প্রদান করা হয় <br>
+                            ✅ সহজ Referral System <br>
+                            ✅ Lucky Draw Winning Opportunity <br>
+
+                            💰 Referral করে আয় করুন <br>
+
+                            🔹 আপনার Referral Link বন্ধুদের সাথে শেয়ার করুন। <br>
+                            🔹 প্রতিটি সফল Referral-এর জন্য ১০০ টাকা বোনাস পান। <br>
+                            🔹 আপনার Referral করা ব্যক্তি যদি আবার নতুন কাউকে যোগ করে, তাহলে আপনি অতিরিক্ত ৫০ টাকা বোনাস
+                            পাবেন। <br>
+
+                            🔥 Unlimited Referral = Unlimited Income <br>
+
+                            যত বেশি মানুষকে যুক্ত করবেন, তত বেশি আয় করার সুযোগ পাবেন।<br>
+
+                            🎁 Lucky Draw সুবিধা <br>
+
+                            আমাদের বিশেষ Draw System-এ অংশগ্রহণ করে হতে পারেন Lucky Winner। <br>
+
+                            🏆 আকর্ষণীয় পুরস্কার জেতার সুযোগ <br>
+                            🏆 নিয়মিত Draw আয়োজন <br>
+                            🏆 সবার জন্য সমান সুযোগ <br>
+
+                            📱 Social Media-তে Share করুন <br>
+
+                            আপনার Referral Link শেয়ার করুন— <br>
+
+                            ✔ Facebook <br>
+                            ✔ TikTok <br>
+                            ✔ WhatsApp <br>
+                            ✔ Messenger <br>
+                            ✔ Instagram <br>
+                            ✔ অন্যান্য Social Media Platform <br>
+
+                            আপনার একটি শেয়ারই হতে পারে নতুন আয়ের উৎস। <br>
+
+                            👥 1M+ Users এর বিশ্বস্ততা <br>
+
+                            ইতোমধ্যে 1 Million+ Users আমাদের সাথে যুক্ত হয়েছেন এবং নিয়মিত আয় করছেন। আপনিও আজই যুক্ত হয়ে
+                            আপনার ইনকামকে আরও সহজ ও
+                            শক্তিশালী করুন। <br>
+
+                            🛠️ Customer Support <br>
+
+                            কোনো ধরনের সমস্যা, প্রশ্ন বা সহায়তার প্রয়োজন হলে আমাদের Customer Care Team সবসময় আপনার পাশে
+                            রয়েছে। <br>
+
+                            📞 দ্রুত সাপোর্ট <br>
+                            📞 সহজ সমাধান <br>
+                            📞 বিশ্বস্ত সেবা <br>
+
+                            🚀 আজই শুরু করুন! <br>
+
+                            🎯 Referral করুন <br>
+                            🎯 Bonus Earn করুন <br>
+                            🎯 Lucky Draw খেলুন <br>
+                            🎯 Withdraw নিন <br>
+
+                            💵 "Share More, Earn More, Grow More!" 💵 <br>
+
+                            আপনার স্মার্ট ইনকামের যাত্রা শুরু হোক আজ থেকেই। 🌟</p>
+                    </div>
+                </div>
+
+
+
+            </section>
+
+            <!-- ================= INTERFACE MODULE: COMPASS WHEEL GAME DRAW ================= -->
+            <section id="tab-draw" class="tab-content space-y-5 hidden">
+                <div class="glass-panel p-5 text-center space-y-5">
+                    <div class="flex justify-between items-center border-b border-slate-900 pb-3">
+                        <div class="text-left">
+                            <h3 class="text-sm font-black text-slate-100 uppercase tracking-wider">LUCKY DRAW</h3>
+                            <p class="text-[10px] text-red-400 font-bold"> DRAW AND WIN
+                            </p>
+                        </div>
+                        <div
+                            class="bg-pink-500/10 text-pink-400 border border-pink-500/20 text-xs font-black px-3 py-1 rounded-xl shadow-inner">
+                            Next Spin: <span id="global-draw-seconds-label" class="text-white font-mono">60</span>s
+                        </div>
+                    </div>
+
+                    <!-- ROTATIONAL GRAPHICS NODE -->
+                    <div class="compass-wheel-container my-6">
+                        <div id="compass-wheel-element" class="compass-wheel-core">
+                            <span
+                                class="absolute top-4 left-1/2 -translate-x-1/2 font-black text-white text-sm tracking-tight drop-shadow-md">A</span>
+                            <span
+                                class="absolute right-5 top-1/2 -translate-y-1/2 font-black text-white text-sm tracking-tight drop-shadow-md">B</span>
+                            <span
+                                class="absolute bottom-4 left-1/2 -translate-x-1/2 font-black text-white text-sm tracking-tight drop-shadow-md">C</span>
+                            <span
+                                class="absolute left-5 top-1/2 -translate-y-1/2 font-black text-white text-sm tracking-tight drop-shadow-md">D</span>
+                        </div>
+                        <div id="compass-needle-element" class="compass-needle-element"></div>
+                        <div class="compass-center-pivot"></div>
+                    </div>
+
+                    <!-- QUANTITATIVE LIVE METRIC FOOTER -->
+                    <div
+                        class="grid grid-cols-4 gap-2 text-[11px] bg-slate-950/80 p-3 rounded-xl border border-slate-900 font-mono">
+                        <div class="border-r border-slate-900/60"><span class="text-red-400 font-bold block mb-0.5">RED
+                            </span> $<span id="pool-amt-A" class="text-white">0</span></div>
+                        <div class="border-r border-slate-900/60"><span
+                                class="text-blue-400 font-bold block mb-0.5">BLUE </span> $<span id="pool-amt-B"
+                                class="text-white">0</span></div>
+                        <div class="border-r border-slate-900/60"><span
+                                class="text-emerald-400 font-bold block mb-0.5">GREEN </span> $<span id="pool-amt-C"
+                                class="text-white">0</span></div>
+                        <div><span class="text-amber-400 font-bold block mb-0.5">YELLOW </span> $<span id="pool-amt-D"
+                                class="text-white">0</span></div>
+                    </div>
+
+                    <!-- OPERATION INTERACTION FORM -->
+                    <div class="grid grid-cols-2 gap-2.5 text-left pt-2">
+                        <div class="space-y-1">
+                            <label class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Target
+                                Node</label>
+                            <select id="draw-user-zone-pick"
+                                class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-xs text-white outline-none focus:border-pink-500/40">
+                                <option value="A">Red</option>
+                                <option value="B">Blue</option>
+                                <option value="C">Green</option>
+                                <option value="D">Yellow</option>
+                            </select>
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">AMOUNT</label>
+                            <input type="number" id="draw-user-bet-amount" placeholder="$ Amount"
+                                class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-xs text-white outline-none focus:border-pink-500/40 font-mono">
+                        </div>
+                    </div>
+
+                    <button onclick="executeDrawStakePlacement()"
+                        class="w-full bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600 text-white text-xs font-black py-3 rounded-xl shadow-lg uppercase tracking-wider transition hover:opacity-90">PLACE
+                        AMOUNT</button>
+                </div>
+
+                <!-- LUCKY DRAW ROUND LOG HISTORY ARCHIVE (NEWLY REBUILT STRUCT) -->
+                <div class="glass-panel p-4 space-y-3">
+                    <h4 class="text-xs font-black text-slate-200 uppercase tracking-wider flex items-center gap-2"><i
+                            class="fa-solid fa-chart-line text-pink-400"></i>DRAW HISTORY</h4>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-[11px] font-mono">
+                            <thead>
+                                <tr class="border-b border-slate-900 text-slate-400 font-sans uppercase text-[10px]">
+                                    <th class="pb-2">Account</th>
+                                    <th class="pb-2">Target</th>
+                                    <th class="pb-2">AMOUNT</th>
+                                    <th class="pb-2 text-right">Result</th>
+                                </tr>
+                            </thead>
+                            <tbody id="global-draw-history-rows" class="divide-y divide-slate-950/40 text-slate-300">
+                                <tr>
+                                    <td colspan="4" class="text-center text-slate-500 italic py-4">No real-time bid
+                                        transactions running</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================= INTERFACE MODULE: 20-STAGE LINEAR SEQUENTIAL REWARD TASK LOOP ================= -->
+            <section id="tab-tasks" class="tab-content space-y-4 hidden">
+                <div class="glass-panel p-4 bg-red-950/20 border border-red-500/20 text-center space-y-1.5 shadow-xl">
+                    <h3
+                        class="text-xs font-black uppercase text-red-400 tracking-wider flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-triangle-exclamation"></i> Security Verification
+                    </h3>
+                    <p class="text-[11px] text-slate-300 leading-relaxed">টাস্ক কমপ্লিট করার পূর্বশর্ত হলো একাউন্ট
+                        অবশ্যই **ID Verified** হতে হবে। একটি টাস্ক অ্যাপ্রুভড হওয়া সাপেক্ষে পরবর্তী টাস্ক ধারাবাহিক
+                        ক্রমানুসারে স্বয়ংক্রিয়ভাবে ওপেন হবে।</p>
+                </div>
+
+                <div id="task-lock-status-banner"
+                    class="p-3.5 rounded-2xl text-xs font-black text-center transition-all duration-300"></div>
+
+                <!-- PROGRESS LOOPS BUILDER TARGET -->
+                <div id="linear-tasks-bucket-list" class="space-y-4"></div>
+
+            </section>
+
+
+
+
+
+
+
+
+            <!-- ================= INTERFACE MODULE: LIQUID DEPOSIT PORTAL ================= -->
+            <section id="tab-deposit" class="tab-content space-y-5 hidden">
+                <div class="glass-panel p-5 space-y-4 shadow-2xl">
+                    <h3 class="text-sm font-black text-slate-100 uppercase tracking-wider flex items-center gap-2"><i
+                            class="fa-solid fa-wallet text-indigo-400"></i> BKASH/NOGOD PERSONAL - 01839687667 SEND
+                        MONEY ONLY</h3>
+
+                    <div class="grid grid-cols-3 gap-2">
+                        <button type="button" id="dep-btn-bKash" onclick="selectDepositGateway('bKash')"
+                            class="gateway-select-btn bg-slate-950/60 border border-slate-900 p-3 rounded-xl text-xs font-black text-pink-500 transition duration-300">bKash</button>
+                        <button type="button" id="dep-btn-Nagad" onclick="selectDepositGateway('Nagad')"
+                            class="gateway-select-btn bg-slate-950/60 border border-slate-900 p-3 rounded-xl text-xs font-black text-orange-500 transition duration-300">Nagad</button>
+                        <!-- <button type="button" id="dep-btn-Rocket" onclick="selectDepositGateway('Rocket')"
+                            class="gateway-select-btn bg-slate-950/60 border border-slate-900 p-3 rounded-xl text-xs font-black text-purple-400 transition duration-300">Rocket</button> -->
+                    </div>
+
+                    <div class="space-y-3 pt-2">
+                        <div class="space-y-1">
+                            <label class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Amount to
+                                Inject</label>
+                            <input type="number" id="deposit-amount" placeholder="Amount (TK)"
+                                class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-white outline-none focus:border-indigo-500/40 font-mono">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Transaction ID
+                                /LAST 4 DIGIT NUMBER</label>
+                            <input type="text" id="deposit-txnid" placeholder="Provide complete TxnID string"
+                                class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-white outline-none focus:border-indigo-500/40 font-mono select-all">
+                        </div>
+                    </div>
+
+                    <button onclick="submitDepositForm()"
+                        class="w-full bg-gradient-to-r from-indigo-600 to-violet-600 text-white text-xs font-black py-3 rounded-xl uppercase tracking-wider shadow-lg">Submit
+                        Verification Request</button>
+                </div>
+            </section>
+
+            <!-- ================= INTERFACE MODULE: SECURE PAYOUT WITHDRAWAL ================= -->
+            <section id="tab-withdraw" class="tab-content space-y-5 hidden">
+                <div class="glass-panel p-5 space-y-4 shadow-2xl">
+                    <h3 class="text-sm font-black text-slate-100 uppercase tracking-wider flex items-center gap-2"><i
+                            class="fa-solid fa-money-bill-transfer text-emerald-400"></i> MINIMUM 100 TK WITHDRAW
+                        MAXIMUM 25000TK (account verify na hole withdraw hobe na)
+                    </h3>
+
+                    <div class="space-y-3">
+                        <div class="space-y-1">
+                            <label class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">PAYMENT
+                                Method</label>
+                            <select id="withdraw-method"
+                                class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-white outline-none focus:border-emerald-500/40">
+                                <option value="bKash">bKash (Personal)</option>
+                                <option value="Nagad">Nagad (Personal)</option>
+
+                            </select>
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">NUMBER</label>
+                            <input type="tel" id="withdraw-account" placeholder="Wallet Number"
+                                class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-white outline-none focus:border-emerald-500/40 font-mono">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">AMOUNT</label>
+                            <input type="number" id="withdraw-amount" placeholder="Amount (TK)"
+                                class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-white outline-none focus:border-emerald-500/40 font-mono">
+                        </div>
+                    </div>
+
+                    <button onclick="submitWithdrawalForm()"
+                        class="w-full bg-gradient-to-r from-emerald-600 to-teal-600 text-white text-xs font-black py-3 rounded-xl uppercase tracking-wider shadow-lg">CONFIRM
+                        REQUEST</button>
+                </div>
+            </section>
+
+            <!-- ================= INTERFACE MODULE: SECURITY ARCHIVE KYC VERIFICATION ================= -->
+            <section id="tab-verification" class="tab-content space-y-5 hidden">
+                <div class="glass-panel p-5 space-y-4 shadow-2xl">
+                    <h3 class="text-sm font-black text-slate-100 uppercase tracking-wider flex items-center gap-2"><i
+                            class="fa-solid fa-address-card text-amber-400"></i> Node Identity (BKASH/NOGOD
+                        PERSONAL -01839687667) TK-300
+                    </h3>
+
+                    <div
+                        class="p-3 bg-amber-500/5 border border-amber-500/20 text-amber-400 rounded-xl text-[10px] font-medium leading-relaxed">
+                        ⚠️ **Notice Engine:** KYC ভেরিফিকেশনের জন্য অবশ্যই TK300 ফি পেমেন্ট করে TxnID সাবমিট করতে হবে।
+                        আইডি ভেরিফিকেশন সাকসেসফুল হলে অ্যাকাউন্ট ট্রাস্ট রেটিং আপগ্রেড হবে।
+                    </div>
+
+                    <div class="space-y-3">
+                        <div class="space-y-1">
+                            <label class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">YOUR payment
+                                bKash/Nogod
+                                personal
+                                Number</label>
+                            <input type="tel" id="kyc-bkash-num" placeholder="01........."
+                                class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-white outline-none focus:border-amber-500/40 font-mono">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">last 4 digit /
+                                TxnID (100 TK)</label>
+                            <input type="text" id="kyc-bkash-txnid" placeholder="Transaction ID / 4 digit number"
+                                class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-white outline-none focus:border-amber-500/40 font-mono">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">National
+                                Identity Code (NID Number)</label>
+                            <input type="number" id="kyc-nid-number" placeholder="NID Document Identity"
+                                class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-white outline-none focus:border-amber-500/40 font-mono">
+                        </div>
+                    </div>
+
+                    <button onclick="processKycSubmissionOrder()"
+                        class="w-full bg-gradient-to-r from-amber-600 to-yellow-600 text-white text-xs font-black py-3 rounded-xl uppercase tracking-wider shadow-lg">SUBMIT
+                        DOCUMENT</button>
+                </div>
+            </section>
+
+            <!-- ================= INTERFACE MODULE: FINANCIAL RECORDS SYSTEM LEDGERS ================= -->
+            <section id="tab-history" class="tab-content space-y-4 hidden">
+
+                <div
+                    class="w-full max-w-md bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl p-6 text-center shadow-2xl">
+
+                    <!-- হেডিং ও আইকন -->
+                    <div class="flex flex-col items-center mb-6">
+                        <div
+                            class="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center mb-3 border border-emerald-500/20">
+                            <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h2 class="text-xl font-bold tracking-wide text-slate-100">Customer Support</h2>
+                        <p class="text-xs text-slate-400 mt-1">আমাদের প্রতিনিধি দলের সাথে যোগাযোগ করুন</p>
+                    </div>
+
+                    <!-- সাপোর্ট বাটন সমূহ -->
+                    <div class="space-y-3">
+
+                        <!-- WhatsApp বাটন -->
+                        <!-- দ্রষ্টব্য: phone= এর পরে আপনার সঠিক হোয়াটসঅ্যাপ নম্বরটি বসান (যেমন: 88017XXXXXXXX) -->
+                        <a href="https://wa.me/8801839687667" target="_blank"
+                            class="flex items-center justify-between p-4 rounded-xl bg-emerald-600/10 hover:bg-emerald-600/20 border border-emerald-500/20 transition group">
+                            <div class="flex items-center gap-3">
+                                <!-- WhatsApp SVG লোগো -->
+                                <svg class="w-6 h-6 text-emerald-400 group-hover:scale-110 transition-transform"
+                                    fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.457L0 24zm6.59-4.846c1.66.986 3.292 1.48 4.961 1.481 5.464 0 9.904-4.43 9.907-9.895.002-2.648-1.02-5.139-2.877-6.998C16.783 1.884 14.29 1.86 11.66 1.86c-5.462 0-9.901 4.43-9.905 9.896-.001 1.812.48 3.534 1.388 5.101L2.23 21.64l4.417-1.155zM16.518 14.1c-.266-.133-1.577-.778-1.819-.866-.243-.088-.419-.133-.596.133-.176.265-.685.866-.839 1.043-.156.176-.311.198-.577.066-.266-.134-1.12-.414-2.133-1.319-.79-.704-1.322-1.573-1.478-1.839-.156-.266-.017-.409.117-.541.12-.12.266-.31.399-.464.133-.155.177-.266.266-.443.089-.177.044-.332-.022-.465-.066-.133-.596-1.436-.816-1.966-.215-.518-.432-.447-.596-.456-.153-.008-.33-.01-.508-.01s-.465.067-.708.332c-.243.265-.929.908-.929 2.214s.952 2.569 1.084 2.747c.133.177 1.875 2.863 4.542 4.012.634.273 1.13.436 1.516.559.637.202 1.217.174 1.675.106.51-.077 1.577-.644 1.8-.1.222-.556.222-1.03-.023-1.12-.043-.088-.176-.133-.443-.265z" />
+                                </svg>
+                                <div class="text-left">
+                                    <p class="text-sm font-semibold text-slate-200">WhatsApp Support</p>
+                                    <p class="text-xs text-emerald-400/80">Active • Instant Reply</p>
+                                </div>
+                            </div>
+                            <!-- Arrow Icon -->
+                            <svg class="w-4 h-4 text-slate-500 group-hover:text-emerald-400 group-hover:translate-x-1 transition-all"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
+
+                    <!-- ফুটার বা নোটিশ -->
+                    <p class="text-[10px] text-slate-600 mt-5 uppercase tracking-widest font-semibold">Secure connection
+                        link</p>
+                </div>
+
+
+
+
+
+                <div class="space-y-3">
+                    <!-- Link Share Section -->
+                    <h3>YOUR REFERAL CODE LINK </h3>
+                    <div
+                        class="p-4 rounded-xl bg-slate-800/40 border border-slate-700/50 backdrop-blur-md shadow-xl max-w-sm">
+
+                        <!-- Input Field (Soto kore thakbe) -->
+                        <div class="relative mb-4">
+                            <input type="text" id="shareUrl" value="https://azimandson.com" readonly
+                                class="w-full bg-slate-900/50 border border-slate-700 text-slate-300 text-xs rounded-lg p-2.5 focus:ring-blue-500 focus:border-blue-500 outline-none">
+                        </div>
+
+                        <!-- Buttons Group -->
+                        <div class="flex gap-2">
+                            <!-- Copy Button -->
+                            <button onclick="copyLink()"
+                                class="flex-1 flex items-center justify-center gap-2 p-3 rounded-xl bg-blue-600/10 hover:bg-blue-600/20 border border-blue-500/20 transition group">
+                                <svg class="w-5 h-5 text-blue-400 group-hover:scale-110 transition-transform"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                                    </path>
+                                </svg>
+                                <span class="text-xs font-semibold text-blue-400" id="copyText">Copy Link</span>
+                            </button>
+
+                            <!-- Share Button -->
+                            <button onclick="shareLink()"
+                                class="flex-1 flex items-center justify-center gap-2 p-3 rounded-xl bg-purple-600/10 hover:bg-purple-600/20 border border-purple-500/20 transition group">
+                                <svg class="w-5 h-5 text-purple-400 group-hover:scale-110 transition-transform"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z">
+                                    </path>
+                                </svg>
+                                <span class="text-xs font-semibold text-purple-400">Share Link</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Footer Notice -->
+                    <p class="text-[10px] text-slate-600 mt-5 uppercase tracking-widest font-semibold">referal
+                        link</p>
+                </div>
+
+                <!-- Scripts -->
+                <script>
+                    function copyLink() {
+                        const copyText = document.getElementById("shareUrl");
+                        const btnText = document.getElementById("copyText");
+
+                        copyText.select();
+                        copyText.setSelectionRange(0, 99999);
+                        navigator.clipboard.writeText(copyText.value);
+
+                        // UI Feedback
+                        btnText.innerText = "Copied!";
+                        setTimeout(() => {
+                            btnText.innerText = "Copy Link";
+                        }, 2000);
+                    }
+
+                    async function shareLink() {
+                        const shareData = {
+                            title: 'Azim and Son',
+                            text: 'Check this official link',
+                            url: document.getElementById("shareUrl").value
+                        };
+
+                        try {
+                            if (navigator.share) {
+                                await navigator.share(shareData);
+                            } else {
+                                alert("Apnar browser-e share option support kore na, kindly copy koren.");
+                            }
+                        } catch (err) {
+                            console.log("Error: " + err);
+                        }
+                    }
+                </script>
+
+
+                <!-- Link Share Section End -->
+                <!-- <div class="glass-panel p-4 space-y-3 shadow-xl">
+                    <h3 class="text-sm font-black text-slate-100 uppercase tracking-wider">YOUR HISTORY</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-[11px] font-mono">
+                            <thead>
+                                <tr class="border-b border-slate-900 text-slate-400 font-sans uppercase text-[10px]">
+                                    <th class="pb-2">Operation Model</th>
+                                    <th class="pb-2">Allocation</th>
+                                    <th class="pb-2">Details Mapping</th>
+                                    <th class="pb-2 text-right">Integrity Verification</th>
+                                </tr>
+                            </thead>
+                            <tbody id="history-rows-bucket" class="divide-y divide-slate-950/40 text-slate-300">
+                                <tr>
+                                    <td colspan="4" class="text-center text-slate-500 italic py-4">No data logs compiled
+                                        yet in local state</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div> -->
+            </section>
+
+
+
+
+
+
+
+
+            <!-- ================= INTERFACE MODULE: CORE SECURITY CLOUD PROFILE ================= -->
+            <section id="tab-profile" class="tab-content space-y-4 hidden">
+                <div class="glass-panel p-6 text-center space-y-4 shadow-2xl">
+                    <div
+                        class="w-16 h-16 bg-gradient-to-br from-indigo-600 to-violet-600 rounded-2xl flex items-center justify-center mx-auto font-black text-white text-xl shadow-lg shadow-indigo-950">
+                        <i class="fa-solid fa-fingerprint"></i>
+                    </div>
+                    <div class="space-y-0.5">
+                        <h3 id="profile-display-real-name" class="text-base font-black text-slate-100 tracking-wide">
+                            Loading Profile User...</h3>
+                        <p id="profile-display-gmail" class="text-xs text-indigo-400 font-mono select-all">Processing
+                            Socket Address...</p>
+                    </div>
+
+                    <div class="flex justify-between items-center text-xs border-t border-slate-900 pt-4 px-1">
+                        <span class="text-slate-400 font-medium"> Status</span>
+                        <span id="kyc-badge-status" class="font-black text-[11px] uppercase tracking-wider">Unknown
+                            Flag</span>
+                    </div>
+
+                    <button onclick="openAdminAuthModal()"
+                        class="w-full bg-gradient-to-r from-red-600 via-rose-600 to-amber-600 text-white text-xs font-black py-3 rounded-xl shadow-xl uppercase tracking-wider transition hover:opacity-95">
+                        <i class="fa-solid fa-shield-halved mr-2"></i>ADMIN PANNEL
+                    </button>
+
+                    <button onclick="handleApplicationLogoutSequence()"
+                        class="w-full bg-slate-950 border border-slate-900 hover:bg-red-950/20 hover:border-red-900/30 text-red-400 text-xs font-bold py-3 rounded-xl transition uppercase tracking-wide">LOG
+                        OUT</button>
+                </div>
+            </section>
+
+            <!-- ========================================================================= -->
+            <!-- ================== MASTER OPERATION CONTROLLER DASHBOARD ================== -->
+            <!-- ========================================================================= -->
+            <section id="tab-admin-dashboard" class="tab-content space-y-5 hidden animate-fadeIn">
+                <div class="glass-panel p-5 border border-red-500/20 space-y-5 shadow-2xl relative">
+                    <div
+                        class="absolute top-0 left-1/4 right-1/4 h-[1px] bg-gradient-to-r from-transparent via-red-500/50 to-transparent">
+                    </div>
+
+                    <div class="flex justify-between items-center pb-3 border-b border-slate-900">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
+                            <h3 class="text-sm font-black text-red-400 uppercase tracking-widest"><i
+                                    class="fa-solid fa-screwdriver-wrench mr-1"></i>Master Command Station Terminal</h3>
+                        </div>
+                        <button onclick="exitAdminPanelDashboard()"
+                            class="text-[10px] bg-slate-950 border border-slate-800 hover:bg-slate-900 px-3 py-1 rounded-lg text-slate-300 font-black uppercase tracking-wider transition">Exit
+                            Platform</button>
+                    </div>
+
+                    <!-- ADMIN PORTAL SUB-TAB TOGGLE ENGINE -->
+                    <div class="grid grid-cols-4 gap-1.5 bg-slate-950/60 p-1 rounded-xl border border-slate-900">
+                        <button onclick="switchAdminSubQueue('deposit')" id="btn-sub-deposit"
+                            class="text-[10px] font-black py-2 rounded-lg text-center uppercase tracking-wider transition">Deposit</button>
+                        <button onclick="switchAdminSubQueue('withdraw')" id="btn-sub-withdraw"
+                            class="text-[10px] font-black py-2 rounded-lg text-center uppercase tracking-wider transition">Withdraw</button>
+                        <button onclick="switchAdminSubQueue('tasks')" id="btn-sub-tasks"
+                            class="text-[10px] font-black py-2 rounded-lg text-center uppercase tracking-wider transition">Tasks/KYC</button>
+                        <button onclick="switchAdminSubQueue('users')" id="btn-sub-users"
+                            class="text-[10px] font-black py-2 rounded-lg text-center uppercase tracking-wider transition">All
+                            Users</button>
+                    </div>
+
+                    <!-- BROADCAST OUTBOUND PUSH SERVER COMPONENT -->
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-900 space-y-3">
+                        <h4
+                            class="text-[10px] font-black text-sky-400 uppercase tracking-wider flex items-center gap-1.5">
+                            <i class="fa-solid fa-satellite-dish"></i> Dispatch Dynamic Cluster Push Alert
+                        </h4>
+                        <div class="grid grid-cols-3 gap-2">
+                            <input type="text" id="admin-target-sms-email" placeholder="User Gmail Address / 'All'"
+                                class="col-span-2 bg-slate-900 border border-slate-800 rounded-lg px-2.5 py-2 text-xs text-white outline-none focus:border-sky-500/30 font-mono">
+                            <button onclick="dispatchLiveAdminSms()"
+                                class="bg-gradient-to-r from-sky-600 to-blue-600 text-white text-[10px] font-black rounded-xl uppercase tracking-wider transition hover:opacity-90">Dispatch</button>
+                        </div>
+                        <input type="text" id="admin-target-sms-content"
+                            placeholder="Compile textual system broadcast alert message payload..."
+                            class="w-full bg-slate-900 border border-slate-800 rounded-lg p-2.5 text-xs text-white outline-none focus:border-sky-500/30">
+                    </div>
+
+                    <!-- SYSTEM DYNAMIC DATA MATRIX TRACKING FEED -->
+                    <div id="admin-queue-container" class="space-y-3 max-h-[420px] overflow-y-auto pr-1"></div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- STATIC CENTRAL FOOTER MATRIX ARCHITECTURE -->
+        <nav
+            class="fixed bottom-0 left-0 right-0 glass-nav z-40 py-2.5 px-6 flex justify-between items-center max-w-md mx-auto rounded-t-3xl shadow-2xl">
+            <button onclick="switchTab('home')" id="nav-btn-home"
+                class="nav-link-item flex flex-col items-center gap-1 text-slate-400 transition-all duration-300"><i
+                    class="fa-solid fa-house-crack text-sm"></i><span
+                    class="text-[9px] font-bold uppercase tracking-wider">Home</span></button>
+            <button onclick="switchTab('draw')" id="nav-btn-draw"
+                class="nav-link-item flex flex-col items-center gap-1 text-slate-400 transition-all duration-300"><i
+                    class="fa-solid fa-compass text-sm"></i><span
+                    class="text-[9px] font-bold uppercase tracking-wider">Draw</span></button>
+            <button onclick="switchTab('tasks')" id="nav-btn-tasks"
+                class="nav-link-item flex flex-col items-center gap-1 text-slate-400 transition-all duration-300"><i
+                    class="fa-solid fa-layer-group text-sm"></i><span
+                    class="text-[9px] font-bold uppercase tracking-wider">Tasks</span></button>
+            <button onclick="switchTab('history')" id="nav-btn-history"
+                class="nav-link-item flex flex-col items-center gap-1 text-slate-400 transition-all duration-300"><i
+                    class="fa-solid fa-clock-rotate-left text-sm"></i><span
+                    class="text-[9px] font-bold uppercase tracking-wider">Ledger</span></button>
+        </nav>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- ================== DISTRIBUTED FIREBASE ENGINE SCRIPT INTEGRATION ================ -->
+    <!-- ========================================================================= -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, getDoc, updateDoc, collection, addDoc, onSnapshot, query, where, deleteDoc, getDocs, orderBy, limit } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+        // Firebase Cluster Node Credentials Configuration Data Parameters
+        const firebaseConfig = {
+            apiKey: "AIzaSyCvW1eM0TD2afTBDWWqmSHksQbm3Esjl2I",
+            authDomain: "tradingviews-77.firebaseapp.com",
+            projectId: "tradingviews-77",
+            storageBucket: "tradingviews-77.firebasestorage.app",
+            messagingSenderId: "277785483742",
+            appId: "1:277785483742:web:eea123b02bf1d2f987e54f",
+            measurementId: "G-BTR2FS9EY5"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const provider = new GoogleAuthProvider();
+
+        // Terminal Authenticator Token System Specifications
+        const ADMIN_GATEWAY_USER = "refer";
+        const ADMIN_GATEWAY_PASS = "0177";
+
+        let currentUserUid = null;
+        let currentUserEmail = null;
+        let googleRealName = "";
+        let userDataState = { balance: 0.00, isVerified: false, isBlocked: false, taskPointer: 1, isTaskAwaiting: false, lastClaimedTimestamp: 0 };
+
+        let currentAdminActiveTab = 'deposit';
+        let selectedGateway = '';
+        let isAdminAuthenticatedSession = false;
+        let activeBidsQueue = [];
+        let globalPoolsValue = { A: 0, B: 0, C: 0, D: 0 };
+        let isDrawProcessing = false;
+        let drawSecondsLeft = 60;
+
+        // Export Operational Logic Handles straight to window object
+        window.handleGoogleLoginAuth = handleGoogleLoginAuth;
+        window.handleApplicationLogoutSequence = handleApplicationLogoutSequence;
+        window.switchTab = switchTab;
+        window.selectDepositGateway = selectDepositGateway;
+        window.submitDepositForm = submitDepositForm;
+        window.submitWithdrawalForm = submitWithdrawalForm;
+        window.processKycSubmissionOrder = processKycSubmissionOrder;
+        window.switchAdminSubQueue = switchAdminSubQueue;
+        window.resolveAdminPipelineOrder = resolveAdminPipelineOrder;
+        window.mutateRegisteredUserBalance = mutateRegisteredUserBalance;
+        window.toggleUserFreezeStatus = toggleUserFreezeStatus;
+        window.executeDrawStakePlacement = executeDrawStakePlacement;
+        window.executeTaskClaimSequenceForm = executeTaskClaimSequenceForm;
+        window.dispatchLiveAdminSms = dispatchLiveAdminSms;
+        window.openAdminAuthModal = openAdminAuthModal;
+        window.closeAdminAuthModal = closeAdminAuthModal;
+        window.verifyAdminCredentials = verifyAdminCredentials;
+        window.exitAdminPanelDashboard = exitAdminPanelDashboard;
+        window.executeDailyFaucetDistributionClaim = executeDailyFaucetDistributionClaim;
+
+        // Reactive State Listener Socket connection wrapper loop
+        onAuthStateChanged(auth, async (user) => {
+            const loginOverlay = document.getElementById('login-screen-overlay');
+            const appWrapper = document.getElementById('main-app-wrapper');
+
+            if (user) {
+                currentUserUid = user.uid;
+                currentUserEmail = user.email;
+                googleRealName = user.displayName ? user.displayName : user.email.split('@')[0];
+
+                document.getElementById('header-user-display-name').innerText = googleRealName;
+                document.getElementById('profile-display-real-name').innerText = googleRealName;
+                document.getElementById('profile-display-gmail').innerText = currentUserEmail;
+
+                loginOverlay.classList.add('hidden');
+                appWrapper.classList.remove('hidden');
+
+                await synchronizeUserCloudProfile(user);
+                listenToLiveLedgerLogs();
+                listenToGlobalDrawEngine();
+                listenToLiveInboundSms();
+                listenToGlobalDrawHistoryLog();
+                startGlobalDrawTimerLoop();
+            } else {
+                currentUserUid = null;
+                appWrapper.classList.add('hidden');
+                loginOverlay.classList.remove('hidden');
+            }
+        });
+
+        async function synchronizeUserCloudProfile(user) {
+            const userRef = doc(db, "users", user.uid);
+            onSnapshot(userRef, (docSnap) => {
+                if (docSnap.exists()) {
+                    userDataState = docSnap.data();
+                } else {
+                    userDataState = {
+                        uid: user.uid,
+                        email: user.email,
+                        balance: 0.00,
+                        isVerified: false,
+                        isBlocked: false,
+                        taskPointer: 1,
+                        isTaskAwaiting: false,
+                        lastClaimedTimestamp: 0
+                    };
+                    setDoc(userRef, userDataState);
+                }
+
+                // Account isolation processing rule
+                document.getElementById('blocked-screen-overlay').className = userDataState.isBlocked ? 'fixed inset-0 bg-slate-950/98 backdrop-blur-2xl flex flex-col items-center justify-center z-50 text-center p-6' : 'hidden';
+                document.getElementById('main-balance').innerText = userDataState.balance.toFixed(2);
+
+                // Handle Daily claim visibility timing state rendering parameters
+                evaluateDailyFaucetTimerLayout();
+
+                const homeBadge = document.getElementById('kyc-home-badge');
+                const profileStatus = document.getElementById('kyc-badge-status');
+                if (userDataState.isVerified) {
+                    if (homeBadge) { homeBadge.innerText = "Verified Node Access"; homeBadge.className = "bg-emerald-500/10 text-emerald-400 text-[10px] font-black px-3 py-1.5 rounded-xl border border-emerald-500/20 shadow-sm glow-green"; }
+                    if (profileStatus) { profileStatus.innerText = "Verified Root Node"; profileStatus.className = "text-emerald-400 font-black text-xs uppercase tracking-wider"; }
+                } else {
+                    if (homeBadge) { homeBadge.innerText = "Unverified Sandbox Profile"; homeBadge.className = "bg-amber-500/10 text-amber-400 text-[10px] font-black px-3 py-1.5 rounded-xl border border-amber-500/20"; }
+                    if (profileStatus) { profileStatus.innerText = "Unverified Access"; profileStatus.className = "text-amber-500 font-black text-xs uppercase tracking-wider"; }
+                }
+                renderSequentialTasksUI();
+            });
+        }
+
+        async function handleGoogleLoginAuth() { try { await signInWithPopup(auth, provider); } catch (e) { alert("Auth Broker Handshake Failure: " + e.message); } }
+        async function handleApplicationLogoutSequence() { if (confirm("🔒 Terminate secure session linkage nodes?")) { await signOut(auth); location.reload(); } }
+
+        function openAdminAuthModal() { if (isAdminAuthenticatedSession) { switchTab('admin-dashboard'); } else { document.getElementById('admin-auth-modal').classList.remove('hidden'); } }
+        function closeAdminAuthModal() { document.getElementById('admin-auth-modal').classList.add('hidden'); }
+        function verifyAdminCredentials() {
+            if (document.getElementById('admin-input-user').value.trim() === ADMIN_GATEWAY_USER && document.getElementById('admin-input-pass').value.trim() === ADMIN_GATEWAY_PASS) {
+                isAdminAuthenticatedSession = true; closeAdminAuthModal(); switchTab('admin-dashboard'); switchAdminSubQueue('deposit');
+            } else { alert('❌ Cryptographic token match failed! Access denied.'); }
+        }
+        function exitAdminPanelDashboard() { isAdminAuthenticatedSession = false; switchTab('profile'); }
+
+        function switchTab(targetTabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            const activeTab = document.getElementById(`tab-${targetTabId}`); if (activeTab) activeTab.classList.remove('hidden');
+            document.querySelectorAll('.nav-link-item').forEach(btn => btn.className = 'nav-link-item flex flex-col items-center gap-1 text-slate-400 transition-all duration-300');
+            const targetNavBtn = document.getElementById(`nav-btn-${targetTabId}`); if (targetNavBtn) targetNavBtn.className = 'nav-link-item flex flex-col items-center gap-1 text-indigo-400 transition-all duration-300 transform scale-105';
+        }
+
+        // ================= REBUILT DAILY REVENUE SUB-SYSTEM =================
+        function evaluateDailyFaucetTimerLayout() {
+            const btn = document.getElementById('daily-claim-master-trigger'); if (!btn) return;
+            const currentTimestamp = Date.now();
+            const elapsedDuration = currentTimestamp - (userDataState.lastClaimedTimestamp || 0);
+            const absoluteOneDayMs = 24 * 60 * 60 * 1000;
+
+            if (elapsedDuration < absoluteOneDayMs) {
+                btn.disabled = true;
+                const remainingTimeMs = absoluteOneDayMs - elapsedDuration;
+                const remainingHours = Math.floor(remainingTimeMs / (1000 * 60 * 60));
+                const remainingMinutes = Math.floor((remainingTimeMs % (1000 * 60 * 60)) / (1000 * 60));
+                btn.innerText = `${remainingHours}h ${remainingMinutes}m`;
+            } else {
+                btn.disabled = false; btn.innerText = "Claim ৳10";
+            }
+        }
+
+        async function executeDailyFaucetDistributionClaim() {
+            const currentTimestamp = Date.now();
+            const elapsedDuration = currentTimestamp - (userDataState.lastClaimedTimestamp || 0);
+            const absoluteOneDayMs = 24 * 60 * 60 * 1000;
+
+            if (elapsedDuration < absoluteOneDayMs) return alert("❌ cool-down pipeline active! পরবর্তী ক্লেইমের জন্য অপেক্ষা করুন।");
+
+            const userRef = doc(db, "users", currentUserUid);
+            await updateDoc(userRef, {
+                balance: userDataState.balance + 10.00,
+                lastClaimedTimestamp: currentTimestamp
+            });
+
+            await addDoc(collection(db, "ledgers"), {
+                uid: currentUserUid,
+                type: "Daily Claim",
+                amount: "+$10.00",
+                details: "Daily Continuous Bonus Asset",
+                status: "Approved",
+                timestamp: currentTimestamp
+            });
+
+            alert("✅ TK10 সফলভাবে আপনার মেইন ব্যালেন্সে যোগ করা হয়েছে!");
+        }
+
+        // ================= STABLE 20-STAGE SEQUENTIAL LOOP PIPELINE =================
+        function renderSequentialTasksUI() {
+            const container = document.getElementById('linear-tasks-bucket-list');
+            const stateBanner = document.getElementById('task-lock-status-banner');
+            if (!container) return; container.innerHTML = '';
+
+            if (userDataState.isTaskAwaiting) {
+                stateBanner.className = "p-3.5 rounded-2xl text-xs font-black text-center bg-amber-500/10 text-amber-400 border border-amber-500/20 shadow-sm animate-pulse";
+                stateBanner.innerHTML = `<i class="fa-solid fa-hourglass-start animate-spin mr-2"></i> Sequence Task Stage #${userDataState.taskPointer} Verification Pending Operator Audit`;
+            } else {
+                stateBanner.className = "p-3.5 rounded-2xl text-xs font-black text-center bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 shadow-sm";
+                stateBanner.innerHTML = `<i class="fa-solid fa-unlock-keyhole mr-2"></i> Sequence Task Stage #${userDataState.taskPointer} is Open & Awaiting Submissions`;
+            }
+
+            for (let i = 1; i <= 100; i++) {
+                const card = document.createElement('div');
+                let stageRewardCalculation = 100;
+
+                if (i < userDataState.taskPointer) {
+                    card.className = "glass-panel p-4 border border-slate-950 bg-slate-950/40 opacity-55 flex justify-between items-center text-xs";
+                    card.innerHTML = `
+                        <div class="flex items-center gap-3">
+                            <div class="w-7 h-7 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 font-bold text-[11px]">${i}</div>
+                            <h4 class="text-slate-400 font-bold uppercase tracking-wide">Task Stage #${i} - Verified & Transferred</h4>
+                        </div>
+                        <span class="text-emerald-400 font-mono font-black">+৳${stageRewardCalculation}.00</span>
+                    `;
+                } else if (i === userDataState.taskPointer) {
+                    if (userDataState.isTaskAwaiting) {
+                        card.className = "glass-panel p-5 border border-amber-500/20 bg-amber-500/5 text-xs text-center text-amber-400 space-y-1";
+                        card.innerHTML = `
+                            <i class="fa-solid fa-satellite animate-bounce text-lg mb-1 block"></i>
+                            <h4 class="font-black uppercase tracking-wider">Task Stage #${i} Submission Package Data Transmitting...</h4>
+                            <p class="text-[10px] text-slate-400">অ্যাডমিন ডাটা প্যাকেট এবং রেফারেল আইডি অডিট সম্পন্ন করার পর পরবর্তী স্টেজ ওপেন হবে।</p>
+                        `;
+                    } else {
+                        card.className = "glass-panel p-5 border border-indigo-500/30 bg-gradient-to-br from-indigo-950/10 via-transparent to-transparent space-y-4 text-xs";
+                        card.innerHTML = `
+                            <div class="flex justify-between items-center border-b border-slate-900 pb-2">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-7 h-7 rounded-lg bg-indigo-500/20 border border-indigo-500/40 flex items-center justify-center text-indigo-400 font-black">${i}</div>
+                                    <h4 class="font-black text-slate-100 uppercase tracking-wider">Active Sequence Reward Task</h4>
+                                </div>
+                                <span class="font-mono font-black text-emerald-400 text-sm bg-emerald-500/5 border border-emerald-500/10 px-2.5 py-0.5 rounded-lg shadow-inner">Reward: ৳${stageRewardCalculation}</span>
+                            </div>
+                            
+                            <div class="space-y-2.5">
+                                <div class="space-y-1">
+                                    <label class="text-[9px] uppercase font-bold text-slate-400 tracking-wider">Referral Google Account (Gmail)</label>
+                                    <input type="email" id="task-param-ref-gmail" placeholder="Enter target referral user Gmail" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-white text-xs outline-none focus:border-indigo-500/40 font-mono">
+                                </div>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <div class="space-y-1">
+                                        <label class="text-[9px] uppercase font-bold text-slate-400 tracking-wider">Transaction ID</label>
+                                        <input type="text" id="task-param-txnid" placeholder="TxnID Token" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-white text-xs outline-none focus:border-indigo-500/40 font-mono">
+                                    </div>
+                                    <div class="space-y-1">
+                                        <label class="text-[9px] uppercase font-bold text-slate-400 tracking-wider">bKash Digit Line (Last 4)</label>
+                                        <input type="number" id="task-param-bkash4" placeholder="Last 4 Digits" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-white text-xs outline-none focus:border-indigo-500/40 font-mono">
+                                    </div>
+                                </div>
+                                <button onclick="executeTaskClaimSequenceForm(${i}, ${stageRewardCalculation})" class="w-full bg-gradient-to-r from-indigo-600 via-purple-600 to-violet-600 text-white font-black py-2.5 rounded-xl uppercase tracking-wider shadow-lg hover:opacity-90 transition mt-2">Submit Verification Fields Packet</button>
+                            </div>
+                        `;
+                    }
+                } else {
+                    card.className = "glass-panel p-3.5 border border-slate-950 opacity-25 flex justify-between items-center text-xs select-none";
+                    card.innerHTML = `
+                        <div class="flex items-center gap-3">
+                            <div class="w-7 h-7 rounded-lg bg-slate-900 flex items-center justify-center text-slate-600 font-bold text-[11px]">${i}</div>
+                            <h4 class="text-slate-500 font-bold uppercase tracking-wide"><i class="fa-solid fa-lock mr-1.5 text-[10px]"></i> Sequence Task Stage Blocked</h4>
+                        </div>
+                    `;
+                }
+                container.appendChild(card);
+            }
+        }
+
+        async function executeTaskClaimSequenceForm(index, reward) {
+            if (!userDataState.isVerified) return alert("❌ Access Violation! অনুগ্রহ করে প্রথমে অ্যাকাউন্ট আইডেন্টিটি KYC অডিট ভেরিফিকেশন সম্পূর্ণ করুন।");
+            const refGmail = document.getElementById('task-param-ref-gmail').value.trim();
+            const txnId = document.getElementById('task-param-txnid').value.trim();
+            const bkash4 = document.getElementById('task-param-bkash4').value.trim();
+
+            if (!refGmail || !txnId || !bkash4) return alert('❌ ইনপুট প্যারামিটার ফিল্ডগুলো অসম্পূর্ণ! সব তথ্য সঠিকভাবে দিন।');
+            if (bkash4.length !== 4) return alert('❌ bKash/nogod Last 4 Digit অবশ্যই ৪ অক্ষরের হতে হবে।');
+
+            await updateDoc(doc(db, "users", currentUserUid), { isTaskAwaiting: true });
+
+            await addDoc(collection(db, "pipelines"), {
+                uid: currentUserUid,
+                email: currentUserEmail,
+                category: 'Tasks',
+                amount: `৳${reward}.00`,
+                details: `[Task Stage #${index}] Ref ID: ${refGmail} | Txn: ${txnId} | bKash Last 4: ${bkash4}`,
+                timestamp: Date.now()
+            });
+
+            await addDoc(collection(db, "ledgers"), {
+                uid: currentUserUid,
+                type: `Task #${index}`,
+                amount: `৳${reward}.00`,
+                details: `Ref: ${refGmail} | Txn: ${txnId}`,
+                status: 'Pending',
+                timestamp: Date.now()
+            });
+
+            alert(`✅ টাস্ক Stage #${index} এর ডাটা প্যাকেট সফলভাবে হয়েছে। অ্যাডমিন অডিট টিম ডাটাবেস এন্ট্রি চেক করে অ্যাপ্রুভ দিলেই পরবর্তী টাস্ক খুলে যাবে।`);
+        }
+
+        // ================= FINANCIAL CHANNELS CONSTRUCTORS =================
+        function selectDepositGateway(name) {
+            selectedGateway = name;
+            document.querySelectorAll('.gateway-select-btn').forEach(btn => btn.className = 'gateway-select-btn bg-slate-950/60 border border-slate-900 p-3 rounded-xl text-xs font-black text-pink-500 transition duration-300');
+            document.getElementById(`dep-btn-${name}`).className = 'gateway-select-btn bg-indigo-600/20 border border-indigo-500/40 p-3 rounded-xl text-xs font-black text-indigo-400 shadow-inner scale-105';
+        }
+
+        async function submitDepositForm() {
+            const amt = document.getElementById('deposit-amount').value; const txn = document.getElementById('deposit-txnid').value;
+            if (!selectedGateway || !amt || !txn) return alert('❌ রিকোয়েস্ট ইনজেকশন ফেইল্ড! সমস্ত ফিল্ড সঠিকভাবে সাবমিট করুন।');
+
+            await addDoc(collection(db, "pipelines"), { uid: currentUserUid, email: currentUserEmail, category: 'Deposit', amount: `৳${parseFloat(amt).toFixed(2)}`, details: `Gateway Network: ${selectedGateway} | Reference TxnID: ${txn}`, timestamp: Date.now() });
+            await addDoc(collection(db, "ledgers"), { uid: currentUserUid, type: 'Deposit', amount: `৳${parseFloat(amt).toFixed(2)}`, details: `Method: ${selectedGateway} | Txn: ${txn}`, status: 'Pending', timestamp: Date.now() });
+            alert('✅ ডিপোজিট ডাটা ভেরিফিকেশন প্যাকেট মেইন সার্ভারে পুশ করা হয়েছে।');
+            document.getElementById('deposit-amount').value = ''; document.getElementById('deposit-txnid').value = '';
+        }
+
+        async function submitWithdrawalForm() {
+            const method = document.getElementById('withdraw-method').value; const acc = document.getElementById('withdraw-account').value;
+            const amt = parseFloat(document.getElementById('withdraw-amount').value);
+
+            if (!acc || isNaN(amt) || amt <= 0 || amt > userDataState.balance) return alert('❌ উইথড্রাল রিজেক্টেড! ব্যালেন্স ইনপুট অসংগতিপূর্ণ অথবা পর্যাপ্ত তহবিল নেই।');
+
+            await updateDoc(doc(db, "users", currentUserUid), { balance: userDataState.balance - amt });
+            await addDoc(collection(db, "pipelines"), { uid: currentUserUid, email: currentUserEmail, category: 'Withdraw', amount: `৳${amt.toFixed(2)}`, details: `Withdraw Method Network: ${method} | Destination Account: ${acc}`, timestamp: Date.now() });
+            await addDoc(collection(db, "ledgers"), { uid: currentUserUid, type: 'Withdraw', amount: `৳${amt.toFixed(2)}`, details: `Target Acc: ${acc}`, status: 'Pending', timestamp: Date.now() });
+            alert('✅ উইথড্রাল রিকোয়েস্ট সফলভাবে প্রসেস করা হয়েছে।');
+            document.getElementById('withdraw-account').value = ''; document.getElementById('withdraw-amount').value = '';
+        }
+
+        async function processKycSubmissionOrder() {
+            const bkash = document.getElementById('kyc-bkash-num').value; const txn = document.getElementById('kyc-bkash-txnid').value; const nid = document.getElementById('kyc-nid-number').value;
+            if (!bkash || !txn || !nid) return alert('❌ সমস্ত অডিট ডকুমেন্টে এন্ট্রি করা আবশ্যিক!');
+
+            await addDoc(collection(db, "pipelines"), { uid: currentUserUid, email: currentUserEmail, category: 'KYC Upgrade', amount: '৳100.00', details: `bKash Source Account: ${bkash} | Legal Document NID: ${nid} | Verification TxnID: ${txn}`, timestamp: Date.now() });
+            await addDoc(collection(db, "ledgers"), { uid: currentUserUid, type: 'KYC Req', amount: '৳100.00', details: `Audit Identification Lock Pending`, status: 'Pending', timestamp: Date.now() });
+            alert('✅ KYC আইডেন্টিটি ভেরিফিকেশন রিকোয়েস্ট মেইন  ডাটাবেস এন্ট্রি করা হয়েছে।');
+            document.getElementById('kyc-bkash-num').value = ''; document.getElementById('kyc-bkash-txnid').value = ''; document.getElementById('kyc-nid-number').value = '';
+        }
+
+        function listenToLiveLedgerLogs() {
+            const q = query(collection(db, "ledgers"), where("uid", "==", currentUserUid), orderBy("timestamp", "desc"));
+            onSnapshot(q, (snapshot) => {
+                const b = document.getElementById('history-rows-bucket'); if (!b) return; b.innerHTML = '';
+                if (snapshot.empty) { b.innerHTML = `<tr><td colspan="4" class="text-center text-slate-500 italic py-4">No data logs compiled yet in cloud state</td></tr>`; return; }
+                snapshot.forEach(doc => {
+                    const data = doc.data();
+                    let color = data.status === 'Approved' ? 'text-emerald-400' : (data.status === 'Pending' ? 'text-amber-400' : 'text-red-500');
+                    b.innerHTML += `
+                        <tr class="border-b border-slate-950/40 hover:bg-slate-900/10 transition">
+                            <td class="py-2.5 font-bold text-slate-200">${data.type}</td>
+                            <td class="py-2.5 ${data.type.includes('Win') || data.type.includes('Claim') ? 'text-emerald-400' : 'text-slate-300'}">${data.amount}</td>
+                            <td class="py-2.5 text-slate-400 font-sans text-[10px] max-w-[120px] truncate" title="${data.details}">${data.details}</td>
+                            <td class="py-2.5 text-right ${color} font-black text-[10px] uppercase">${data.status}</td>
+                        </tr>
+                    `;
+                });
+            });
+        }
+
+        // ================= AUTOMATED DYNAMIC DRAW INFRASTRUCTURE =================
+        function listenToGlobalDrawEngine() {
+            onSnapshot(collection(db, "draw_bids"), (snapshot) => {
+                activeBidsQueue = []; globalPoolsValue = { A: 0, B: 0, C: 0, D: 0 };
+                snapshot.forEach(doc => {
+                    const data = doc.data(); activeBidsQueue.push({ id: doc.id, ...data });
+                    if (globalPoolsValue[data.zone] !== undefined) globalPoolsValue[data.zone] += data.amount;
+                });
+                document.getElementById('pool-amt-A').innerText = globalPoolsValue.A;
+                document.getElementById('pool-amt-B').innerText = globalPoolsValue.B;
+                document.getElementById('pool-amt-C').innerText = globalPoolsValue.C;
+                document.getElementById('pool-amt-D').innerText = globalPoolsValue.D;
+            });
+        }
+
+        // DYNAMIC LUCKY DRAW SYSTEM REALTIME GLOBAL TRANSACTIONS REBUILD
+        // function listenToGlobalDrawHistoryLog() {
+        //     const q = query(collection(db, "draw_global_history"), orderBy("timestamp", "desc"), limit(15));
+        //     onSnapshot(q, (snapshot) => {
+        //         const container = document.getElementById('global-draw-history-rows'); if (!container) return; container.innerHTML = '';
+        //         if (snapshot.empty) { container.innerHTML = `<tr><td colspan="4" class="text-center text-slate-500 italic py-4">No real-time bid transactions running</td></tr>`; return; }
+        //         snapshot.forEach(doc => {
+        //             const h = doc.data();
+        //             let stateColor = h.winStatus ? 'text-emerald-400 font-black' : 'text-slate-500';
+        //             container.innerHTML += `
+        //                 <tr class="border-b border-slate-950/20 hover:bg-slate-900/5 transition">
+        //                     <td class="py-2 text-slate-400 select-all max-w-[90px] truncate">${h.userName}</td>
+        //                     <td class="py-2"><span class="px-1.5 py-0.5 rounded text-[9px] bg-slate-950 font-bold uppercase ${h.zone === 'A' ? 'text-red-400' : h.zone === 'B' ? 'text-blue-400' : h.zone === 'C' ? 'text-emerald-400' : 'text-amber-400'}">Zone ${h.zone}</span></td>
+        //                     <td class="py-2 text-slate-300">৳${h.amount}</td>
+        //                     <td class="py-2 text-right ${stateColor}">${h.winStatus ? `+৳${(h.amount * 2)}` : 'Loss Node'}</td>
+        //                 </tr>
+        //             `;
+        //         });
+        //     });
+        // }
+        function listenToGlobalDrawHistoryLog() {
+            const q = query(collection(db, "draw_global_history"), orderBy("timestamp", "desc"), limit(15));
+
+            onSnapshot(q, (snapshot) => {
+                const container = document.getElementById('global-draw-history-rows');
+                if (!container) return;
+                container.innerHTML = '';
+
+                if (snapshot.empty) {
+                    container.innerHTML = `<tr><td colspan="4" class="text-center text-slate-500 italic py-4">No real-time bid transactions running</td></tr>`;
+                    return;
+                }
+
+                // ১. প্রতিটি জোনের মোট টাকা জমানোর অবজেক্ট
+                const zoneAmounts = { 'A': 0, 'B': 0, 'C': 0, 'D': 0 };
+                const historyData = [];
+
+                // ২. ডেটা পুশ করা এবং জোন ভিত্তিক মোট টাকা যোগ করা
+                snapshot.forEach(doc => {
+                    const h = doc.data();
+                    historyData.push(h);
+                    if (zoneAmounts[h.zone] !== undefined) {
+                        zoneAmounts[h.zone] += Number(h.amount) || 0;
+                    }
+                });
+
+                // ৩. সবচেয়ে বেশি টাকা কোন জোনে পড়েছে (Highest Zone) তা খুঁজে বের করা
+                let maxAmount = -1;
+                let highestZone = '';
+
+                for (const zone in zoneAmounts) {
+                    if (zoneAmounts[zone] > maxAmount) {
+                        maxAmount = zoneAmounts[zone];
+                        highestZone = zone;
+                    }
+                }
+
+                // ৪. সবচেয়ে বেশি টাকার জোনটি বাদ দিয়ে বাকি জোনগুলোর একটি লিস্ট তৈরি করা
+                const allowedZones = Object.keys(zoneAmounts).filter(zone => zone !== highestZone);
+
+                // ৫. বাকি জোনগুলোর মধ্য থেকে যেকোনো একটি জোন ভাগ্যবশত (Randomly) উইনার হবে
+                // আপনি চাইলে এখানে প্রথমটি বা যেকোনো নির্দিষ্ট একটিও ফিক্সড করতে পারেন। বর্তমানে এটি র‍্যান্ডমলি সিলেক্ট করবে।
+                const winnerZone = allowedZones[Math.floor(Math.random() * allowedZones.length)];
+
+                // ৬. এখন UI-তে ডেটা রেন্ডার করা
+                historyData.forEach(h => {
+                    // চেক করা হচ্ছে এই রো-এর জোনটিই আমাদের উইনার জোন কি না
+                    const isWinnerZone = (h.zone === winnerZone);
+                    let stateColor = isWinnerZone ? 'text-emerald-400 font-black' : 'text-slate-500';
+
+                    container.innerHTML += `
+                <tr class="border-b border-slate-950/20 hover:bg-slate-900/5 transition">
+                    <td class="py-2 text-slate-400 select-all max-w-[90px] truncate">${h.userName}</td>
+                    <td class="py-2">
+                        <span class="px-1.5 py-0.5 rounded text-[9px] bg-slate-950 font-bold uppercase ${h.zone === 'A' ? 'text-red-400' : h.zone === 'B' ? 'text-blue-400' : h.zone === 'C' ? 'text-emerald-400' : 'text-amber-400'}">
+                            Zone ${h.zone}
+                        </span>
+                    </td>
+                    <td class="py-2 text-slate-300">৳${h.amount}</td>
+                    <td class="py-2 text-right ${stateColor}">
+                        ${isWinnerZone ? `+৳${(h.amount * 2)}` : 'Loss Node'}
+                    </td>
+                </tr>
+            `;
+                });
+            });
+        }
+
+        function startGlobalDrawTimerLoop() {
+            setInterval(() => {
+                if (isDrawProcessing) return; drawSecondsLeft--;
+                const timer = document.getElementById('global-draw-seconds-label'); if (timer) timer.innerText = drawSecondsLeft;
+                if (drawSecondsLeft <= 0) {
+                    if (activeBidsQueue.length > 0) triggerCalculatedLowPoolDraw(); else drawSecondsLeft = 60;
+                }
+            }, 1000);
+        }
+
+        async function executeDrawStakePlacement() {
+            const zone = document.getElementById('draw-user-zone-pick').value; const amt = parseFloat(document.getElementById('draw-user-bet-amount').value);
+            if (isNaN(amt) || amt <= 0 || amt > userDataState.balance) return alert('❌ লেনদেন রিজেক্টেড! পর্যাপ্ত ব্যালেন্স নেই অথবা ইনপুট সংখ্যা সঠিক নয়।');
+
+            await updateDoc(doc(db, "users", currentUserUid), { balance: userDataState.balance - amt });
+            await addDoc(collection(db, "draw_bids"), { uid: currentUserUid, userName: googleRealName, userEmail: currentUserEmail, zone: zone, amount: amt, timestamp: Date.now() });
+            document.getElementById('draw-user-bet-amount').value = '';
+            alert(`✅ Cluster Zone ${zone}-এ সফলভাবে ৳${amt} লিকুইডিটি পুশ করা হয়েছে!`);
+        }
+
+        async function triggerCalculatedLowPoolDraw() {
+            isDrawProcessing = true; let zones = ['A', 'B', 'C', 'D']; let winZone = 'A'; let min = globalPoolsValue.A;
+            zones.forEach(z => { if (globalPoolsValue[z] < min) { min = globalPoolsValue[z]; winZone = z; } });
+
+            // Calculate base rotation vector degree indices
+            let deg = 2160; // multi rotation cycle setup
+            if (winZone === 'A') deg += 45; if (winZone === 'B') deg += 135; if (winZone === 'C') deg += 225; if (winZone === 'D') deg += 315;
+            const needle = document.getElementById('compass-needle-element'); if (needle) needle.style.transform = `translate(-50%, -85px) rotate(${deg}deg)`;
+
+            setTimeout(async () => {
+                const processingBids = [...activeBidsQueue];
+                for (let bid of processingBids) {
+                    const win = (bid.zone === winZone); let payout = win ? (bid.amount * 2) : 0;
+                    if (win) {
+                        const pRef = doc(db, "users", bid.uid); const pSnap = await getDoc(pRef);
+                        if (pSnap.exists()) await updateDoc(pRef, { balance: (pSnap.data().balance || 0) + payout });
+                    }
+
+                    // Post configuration profile transaction ledgers logs
+                    await addDoc(collection(db, "ledgers"), { uid: bid.uid, type: win ? 'Draw Win' : 'Draw Loss', amount: win ? `+৳${payout}.00` : `-৳${bid.amount}.00`, details: `Zone ${bid.zone} Algorithm Clearance`, status: win ? 'Approved' : 'Failed', timestamp: Date.now() });
+
+                    // Post parameters global historical archive ledger registry 
+                    await addDoc(collection(db, "draw_global_history"), { userName: bid.userName || bid.userEmail.split('@')[0], zone: bid.zone, amount: bid.amount, winStatus: win, timestamp: Date.now() });
+
+                    await deleteDoc(doc(db, "draw_bids", bid.id));
+                }
+
+                // Reset mechanical properties vector parameters
+                if (needle) { needle.style.transition = 'none'; needle.style.transform = `translate(-50%, -85px) rotate(${deg % 360}deg)`; setTimeout(() => { needle.style.transition = 'transform 5s cubic-bezier(0.15, 0.85, 0.3, 1)'; }, 50); }
+                drawSecondsLeft = 60; isDrawProcessing = false;
+            }, 5200);
+        }
+
+        // ================= CLUSTER ROOT ADMINISTRATIVE INTERFACES ENGINE =================
+        function switchAdminSubQueue(seg) {
+            currentAdminActiveTab = seg;
+            document.querySelectorAll('[id^="btn-sub-"]').forEach(b => b.className = 'text-[10px] font-black py-2 rounded-lg text-center uppercase tracking-wider transition bg-slate-950/60 text-slate-500');
+            document.getElementById(`btn-sub-${seg}`).className = 'text-[10px] font-black py-2 rounded-lg text-center uppercase tracking-wider transition bg-red-500/10 text-red-400 border border-red-500/20';
+            listenToAdminRealtimePipelines();
+        }
+
+        function listenToAdminRealtimePipelines() {
+            const container = document.getElementById('admin-queue-container'); if (!container) return; container.innerHTML = '';
+
+            // REALTIME ALL USER BROAD OVERVIEW DATA RETRIEVAL HANDLER
+            if (currentAdminActiveTab === 'users') {
+                onSnapshot(collection(db, "users"), (snap) => {
+                    container.innerHTML = '';
+                    if (snap.empty) { container.innerHTML = `<p class="text-center text-slate-500 italic text-xs pt-4">No users registered on system</p>`; return; }
+                    snap.forEach((userDoc) => {
+                        const u = userDoc.data();
+                        const div = document.createElement('div');
+                        div.className = "bg-slate-950/90 p-4 rounded-2xl border border-slate-900 space-y-3 text-xs text-left shadow-md relative overflow-hidden";
+                        div.innerHTML = `
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <p class="font-black text-slate-200 select-all font-mono">${u.email}</p>
+                                    <p class="text-[10px] text-slate-400 mt-1 font-sans">Bal: <span class="text-emerald-400 font-bold font-mono">৳${u.balance.toFixed(2)}</span> | KYC: <span class="${u.isVerified ? 'text-emerald-400' : 'text-amber-500'} font-black uppercase tracking-wide text-[9px]">${u.isVerified ? 'Verified' : 'Unverified'}</span> | Task Stage: <span class="text-indigo-400 font-mono font-black">#${u.taskPointer}</span></p>
+                                </div>
+                                <button onclick="toggleUserFreezeStatus('${userDoc.id}', ${u.isBlocked})" class="bg-red-950/60 text-red-400 text-[10px] px-2.5 py-1 rounded-lg border border-red-500/20 font-black uppercase tracking-wide transition hover:bg-red-900/30">${u.isBlocked ? '🔓 Unfreeze' : '🔒 Freeze Account'}</button>
+                            </div>
+                            <div class="flex gap-2 items-center pt-1 border-t border-slate-900/60">
+                                <input type="number" id="adj-${userDoc.id}" placeholder="৳ Injection Amount" class="w-2/3 bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-lg text-white text-xs outline-none focus:border-indigo-500/30 font-mono">
+                                <button onclick="mutateRegisteredUserBalance('${userDoc.id}', ${u.balance})" class="w-1/3 bg-indigo-600 text-white font-black py-1.5 rounded-xl text-[11px] uppercase tracking-wider shadow-md hover:bg-indigo-500">Inject</button>
+                            </div>
+                        `;
+                        container.appendChild(div);
+                    });
+                });
+                return;
+            }
+
+            // Normal conditional validation state snapshot tracking pipelines
+            onSnapshot(collection(db, "pipelines"), (snap) => {
+                container.innerHTML = ''; let itemsCount = 0;
+                snap.forEach((pipeDoc) => {
+                    const p = pipeDoc.data(); let selectionMatchFilter = false;
+                    if (currentAdminActiveTab === 'deposit' && p.category === 'Deposit') selectionMatchFilter = true;
+                    if (currentAdminActiveTab === 'withdraw' && p.category === 'Withdraw') selectionMatchFilter = true;
+                    if (currentAdminActiveTab === 'tasks' && (p.category === 'Tasks' || p.category === 'KYC Upgrade')) selectionMatchFilter = true;
+
+                    if (selectionMatchFilter) {
+                        itemsCount++;
+                        const div = document.createElement('div');
+                        div.className = "bg-slate-950/80 p-4 rounded-2xl border border-slate-900 flex justify-between items-center text-xs gap-4 text-left shadow-lg";
+                        div.innerHTML = `
+                            <div class="space-y-1.5 min-w-0 flex-1">
+                                <p class="font-bold text-slate-300 font-mono truncate select-all">${p.email}</p>
+                                <p class="text-indigo-400 font-mono font-black text-sm">${p.amount} <span class="bg-indigo-500/10 border border-indigo-500/20 px-2 py-0.5 text-[9px] font-black rounded-md uppercase ml-1.5 tracking-wider">${p.category}</span></p>
+                                <div class="text-[10px] text-slate-400 leading-relaxed bg-slate-900/50 p-2 rounded-xl border border-slate-900 font-sans break-words select-all">${p.details}</div>
+                            </div>
+                            <div class="flex flex-col gap-2 shrink-0">
+                                <button onclick="resolveAdminPipelineOrder('${pipeDoc.id}', '${p.uid}', '${p.category}', '${p.amount}', 'approve')" class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-black px-3.5 py-1.5 rounded-xl text-[11px] uppercase tracking-wider shadow-md shadow-emerald-950/20">Approve</button>
+                                <button onclick="resolveAdminPipelineOrder('${pipeDoc.id}', '${p.uid}', '${p.category}', '${p.amount}', 'reject')" class="bg-slate-900 text-red-400 border border-red-900/20 hover:bg-red-950/30 font-black px-3.5 py-1.5 rounded-xl text-[11px] uppercase tracking-wider transition">Reject</button>
+                            </div>
+                        `;
+                        container.appendChild(div);
+                    }
+                });
+                if (itemsCount === 0) container.innerHTML = `<p class="text-center text-slate-500 italic text-xs pt-6">কোনো মেম্বার ডাটা রিকোয়েস্ট পেন্ডিং নেই এই ট্যাবে</p>`;
+            });
+        }
+
+        async function resolveAdminPipelineOrder(docId, targetUid, category, amount, statusFlag) {
+            const userRef = doc(db, "users", targetUid); const userSnap = await getDoc(userRef); if (!userSnap.exists()) return;
+            const uData = userSnap.data();
+            let numeric = parseFloat(amount.replace('৳', ''));
+            let logType = category === 'Tasks' ? `Task #${uData.taskPointer}` : (category === 'KYC Upgrade' ? 'KYC Req' : category);
+
+            if (statusFlag === 'approve') {
+                if (category === 'Deposit' && !isNaN(numeric)) await updateDoc(userRef, { balance: uData.balance + numeric });
+                if (category === 'Tasks' && !isNaN(numeric)) await updateDoc(userRef, { balance: uData.balance + numeric, isTaskAwaiting: false, taskPointer: uData.taskPointer + 1 });
+                if (category === 'KYC Upgrade') await updateDoc(userRef, { isVerified: true });
+                await addDoc(collection(db, "ledgers"), { uid: targetUid, type: logType, amount: amount, details: "Transaction Approved By Master Admin", status: "Approved", timestamp: Date.now() });
+            } else {
+                if (category === 'Withdraw' && !isNaN(numeric)) await updateDoc(userRef, { balance: uData.balance + numeric });
+                if (category === 'Tasks') await updateDoc(userRef, { isTaskAwaiting: false });
+                await addDoc(collection(db, "ledgers"), { uid: targetUid, type: logType, amount: amount, details: "Rejected/Declined by Security Architecture", status: "Failed", timestamp: Date.now() });
+            }
+            await deleteDoc(doc(db, "pipelines", docId));
+        }
+
+        async function mutateRegisteredUserBalance(uid, currentBal) {
+            const input = document.getElementById(`adj-${uid}`); const val = parseFloat(input.value);
+            if (isNaN(val) || val <= 0) return alert('❌ ইনজেকশন এমাউন্ট সঠিক নয়!');
+            await updateDoc(doc(db, "users", uid), { balance: currentBal + val });
+            await addDoc(collection(db, "ledgers"), { uid: uid, type: 'Admin Adjust', amount: `+৳${val.toFixed(2)}`, details: "Manual Cash Asset Injection", status: "Approved", timestamp: Date.now() });
+            alert('✅ ৳' + val.toFixed(2) + ' ইউজার একাউন্ট ক্যাশ ব্যালেন্সে যোগ করা হয়েছে!'); input.value = '';
+        }
+
+        async function toggleUserFreezeStatus(uid, blockState) { await updateDoc(doc(db, "users", uid), { isBlocked: !blockState }); }
+
+        // ================= CLUSTER NETWORK BROADCAST SINK ENGINE =================
+        async function dispatchLiveAdminSms() {
+            const target = document.getElementById('admin-target-sms-email').value.trim();
+            const txt = document.getElementById('admin-target-sms-content').value.trim();
+            if (!target || !txt) return alert("❌ ডাটা ফিল্ড ফাকা রাখা যাবে না!");
+            await addDoc(collection(db, "notifications"), { target, text: txt, timestamp: Date.now() });
+            document.getElementById('admin-target-sms-content').value = '';
+            alert("🔔 Outbound broad push notify event processing complete!");
+        }
+
+        function listenToLiveInboundSms() {
+            const q = query(collection(db, "notifications"), orderBy("timestamp", "desc"), limit(10));
+            onSnapshot(q, (snapshot) => {
+                const box = document.getElementById('user-live-notification-box'); if (!box) return; box.innerHTML = '';
+                let clusterMatchFlag = false;
+                snapshot.forEach(doc => {
+                    const sms = doc.data();
+                    if (sms.target.toLowerCase() === 'all' || sms.target.toLowerCase() === currentUserEmail.toLowerCase()) {
+                        clusterMatchFlag = true;
+                        box.innerHTML += `
+                            <div class="sms-alert-node p-3 rounded-xl border border-sky-500/10 space-y-1">
+                                <p class="text-slate-200 leading-normal font-sans">${sms.text}</p>
+                                <span class="text-[8px] font-mono font-bold text-sky-400/60 block text-right">${new Date(sms.timestamp).toLocaleTimeString()}</span>
+                            </div>
+                        `;
+                    }
+                });
+                if (!clusterMatchFlag) box.innerHTML = `<p class="text-slate-500 italic text-center py-4">ইনবক্স ফাকা আছে</p>`;
+            });
+        }
+    </script>
+</body>
+
+</html>
